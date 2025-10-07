@@ -6,6 +6,7 @@ class Program
     {
         while (true)
         {
+            // Display menu
             Console.WriteLine("\n=== C# Assignment Menu ===");
             Console.WriteLine("1. Q1: Operations");
             Console.WriteLine("2. Q2: Swap Numbers");
@@ -57,15 +58,28 @@ class Program
         }
     }
 
-    // --- Question Methods ---
+    // ==================== Q1 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Evaluate arithmetic expressions
+    /// - Print each result
+    /// </summary>
     static void Q1_Operations()
     {
+        Console.WriteLine("Q1 Results:");
         Console.WriteLine(-1 + 4 * 6);           // 23
         Console.WriteLine((35 + 5) % 7);         // 5
         Console.WriteLine(14 + -4 * 6 / 11);     // 12
         Console.WriteLine(2 + 15 / 6 * 1 - 7 % 2); // 3
     }
 
+    // ==================== Q2 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Read two numbers from user
+    /// - Swap values using temporary variable
+    /// - Print swapped numbers
+    /// </summary>
     static void Q2_SwapNumbers()
     {
         Console.Write("Input the First Number: ");
@@ -83,6 +97,13 @@ class Program
         Console.WriteLine("Second Number: " + b);
     }
 
+    // ==================== Q3 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Read two integers
+    /// - If equal, return triple their sum
+    /// - Otherwise, return sum
+    /// </summary>
     static void Q3_SumTriple()
     {
         Console.Write("Enter first integer: ");
@@ -95,6 +116,14 @@ class Program
         Console.WriteLine("Result: " + result);
     }
 
+    // ==================== Q4 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Read Celsius temperature
+    /// - Convert to Kelvin: kelvin = celsius + 273
+    /// - Convert to Fahrenheit: fahrenheit = celsius * 18 / 10 + 32
+    /// - Print results
+    /// </summary>
     static void Q4_CelsiusConversion()
     {
         Console.Write("Enter Celsius: ");
@@ -107,6 +136,12 @@ class Program
         Console.WriteLine("Fahrenheit = " + fahrenheit);
     }
 
+    // ==================== Q5 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Loop from 1 to 99
+    /// - Print only odd numbers
+    /// </summary>
     static void Q5_PrintOddNumbers()
     {
         for (int i = 1; i < 100; i += 2)
@@ -115,6 +150,13 @@ class Program
         }
     }
 
+    // ==================== Q6 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Read a key from the user
+    /// - If 0-9, display number
+    /// - Otherwise, display "Not allowed"
+    /// </summary>
     static void Q6_NumberKeyCheck()
     {
         Console.Write("Press a key: ");
@@ -127,21 +169,53 @@ class Program
             Console.WriteLine("Not allowed");
     }
 
+    // ==================== Q7 ====================
+    /// <summary>
+    /// Pseudocode:
+    /// - Loop until user types "exit"
+    /// - Read a real number
+    /// - If negative, print error
+    /// - Otherwise, compute square root
+    /// - Handle FormatException, OverflowException, other exceptions
+    /// </summary>
     static void Q7_SquareRoot()
     {
-        try
+        while (true)
         {
-            Console.Write("Enter a real number: ");
-            double num = double.Parse(Console.ReadLine());
+            try
+            {
+                Console.Write("Enter a real number (or type 'exit' to return to menu): ");
+                string input = Console.ReadLine();
 
-            if (num < 0)
-                Console.WriteLine("Cannot compute square root of a negative number.");
-            else
-                Console.WriteLine("Square root: " + Math.Sqrt(num));
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Invalid input! Please enter a valid number.");
+                if (input.Trim().ToLower() == "exit")
+                    break;
+
+                double num = double.Parse(input);
+
+                if (num < 0)
+                {
+                    Console.WriteLine("Error: Cannot compute square root of a negative number.");
+                }
+                else
+                {
+                    double sqrt = Math.Sqrt(num);
+                    Console.WriteLine($"Square root of {num} is {sqrt}");
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input! Please enter a valid real number.");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Number too large or too small to process.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+            }
+
+            Console.WriteLine();
         }
     }
 }
