@@ -19,7 +19,7 @@ It simulates capturing and managing basic inventory information, allowing users 
 flowchart TD
     A[Start Application] --> B[Display Main Menu]
     B --> C{Select Option}
-    
+
     C -->|1. Insert Item| D[Prompt User for ID, Name, Description, Price]
     D --> E{Validate Input}
     E -->|Valid| F[Store Item in List]
@@ -41,7 +41,6 @@ flowchart TD
     N --> B
 
     C -->|4. Exit| O[Terminate Program]
-
 
 
 🎯 Objectives
