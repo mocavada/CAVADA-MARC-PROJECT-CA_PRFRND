@@ -15,7 +15,7 @@ You have been tasked, as a **junior programmer**, to design, code, test, and doc
 
 
 
-## 📊 Program Flow (Mermaid Diagram)
+### 📊 Program Flow (Mermaid Diagram)
 
 ```mermaid
 flowchart TD
@@ -42,7 +42,6 @@ flowchart TD
 
     C -->|4. Exit| O[Terminate Program]
     G --> D
-
 
 
 ## 🎯 Objectives  
