@@ -13,12 +13,9 @@ It simulates capturing and managing basic inventory information, allowing users 
 
 You have been tasked, as a **junior programmer**, to design, code, test, and document the solution. The prototype must be completed within **six days**, demonstrating your understanding of programming fundamentals, analysis, and iterative development.  
 
-# 🧩 Inventory Management System  
-**Project 1 – Programming Fundamentals (CA-PRFND)**  
 
-## 🧠 Development Phases  
 
-### 📊 Program Flow (Mermaid Diagram)
+## 📊 Program Flow (Mermaid Diagram)
 
 ```mermaid
 flowchart TD
@@ -47,9 +44,6 @@ flowchart TD
     G --> D
 
 
-
-
----
 
 ## 🎯 Objectives  
 The main objectives of this project are to:  
