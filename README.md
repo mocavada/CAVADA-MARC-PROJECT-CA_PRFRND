@@ -42,7 +42,7 @@ flowchart TD
 
     C -->|4. Exit| O[Terminate Program]
 
----
+⸻
 
 🎯 Objectives
 
