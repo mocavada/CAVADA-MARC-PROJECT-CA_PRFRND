@@ -13,6 +13,42 @@ It simulates capturing and managing basic inventory information, allowing users 
 
 You have been tasked, as a **junior programmer**, to design, code, test, and document the solution. The prototype must be completed within **six days**, demonstrating your understanding of programming fundamentals, analysis, and iterative development.  
 
+# 🧩 Inventory Management System  
+**Project 1 – Programming Fundamentals (CA-PRFND)**  
+
+## 🧠 Development Phases  
+
+### 📊 Program Flow (Mermaid Diagram)
+
+```mermaid
+flowchart TD
+    A[Start Application] --> B[Display Main Menu]
+    B --> C{Select Option}
+    C -->|1. Insert Item| D[Prompt User for ID, Name, Description, Price]
+    D --> E{Validate Input}
+    E -->|Valid| F[Store Item in List]
+    E -->|Invalid| G[Display Error Message]
+    F --> H{Add Another Item?}
+    H -->|Yes| D
+    H -->|No| B
+
+    C -->|2. Display Item| I[Prompt User for ID]
+    I --> J{ID Exists?}
+    J -->|Yes| K[Display Item Details]
+    J -->|No| L[Display "Item Not Found"]
+    K --> B
+    L --> B
+
+    C -->|3. Display All Items| M[Iterate through List]
+    M --> N[Display Each Item with Headers]
+    N --> B
+
+    C -->|4. Exit| O[Terminate Program]
+    G --> D
+
+
+
+
 ---
 
 ## 🎯 Objectives  
