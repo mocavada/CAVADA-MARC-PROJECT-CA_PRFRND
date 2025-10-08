@@ -13,8 +13,6 @@ It simulates capturing and managing basic inventory information, allowing users 
 
 You have been tasked, as a **junior programmer**, to design, code, test, and document the solution. The prototype must be completed within **six days**, demonstrating your understanding of programming fundamentals, analysis, and iterative development.  
 
-
-
 ### 📊 Program Flow (Mermaid Diagram)
 
 ```mermaid
@@ -42,7 +40,6 @@ flowchart TD
 
     C -->|4. Exit| O[Terminate Program]
     G --> D
-
 
 ## 🎯 Objectives  
 The main objectives of this project are to:  
