@@ -13,12 +13,15 @@ It simulates capturing and managing basic inventory information, allowing users 
 
 You have been tasked, as a **junior programmer**, to design, code, test, and document the solution. The prototype must be completed within **six days**, demonstrating your understanding of programming fundamentals, analysis, and iterative development.  
 
-### 📊 Program Flow (Mermaid Diagram)
+---
+
+## 📊 Program Flow (Mermaid Diagram)
 
 ```mermaid
 flowchart TD
     A[Start Application] --> B[Display Main Menu]
     B --> C{Select Option}
+    
     C -->|1. Insert Item| D[Prompt User for ID, Name, Description, Price]
     D --> E{Validate Input}
     E -->|Valid| F[Store Item in List]
@@ -26,6 +29,7 @@ flowchart TD
     F --> H{Add Another Item?}
     H -->|Yes| D
     H -->|No| B
+    G --> D
 
     C -->|2. Display Item| I[Prompt User for ID]
     I --> J{ID Exists?}
@@ -39,67 +43,77 @@ flowchart TD
     N --> B
 
     C -->|4. Exit| O[Terminate Program]
-    G --> D
 
-## 🎯 Objectives  
-The main objectives of this project are to:  
 
-- Interpret specifications and perform requirement analysis.  
-- Design a functional solution based on requirements.  
-- Apply program logic, structures, and error-handling.  
-- Translate design into working source code in **C#**.  
-- Debug, test, and validate input/output.  
-- Use **Visual Studio IDE** features effectively.  
-- Demonstrate knowledge of procedural flow and control structures.  
+⸻
 
----
+🎯 Objectives
 
-## ⏱️ Time Required  
-You will need approximately **30 hours** to complete this project.  
-This includes **5 in-class sessions** plus homework and testing.  
+The main objectives of this project are to:
+	•	Interpret specifications and perform requirement analysis.
+	•	Design a functional solution based on requirements.
+	•	Apply program logic, structures, and error-handling.
+	•	Translate design into working source code in C#.
+	•	Debug, test, and validate input/output.
+	•	Use Visual Studio IDE features effectively.
+	•	Demonstrate knowledge of procedural flow and control structures.
 
----
+⸻
 
-## 🧰 Required Materials  
-- **Microsoft Visual Studio .NET** (C#)  
-- **Visual Studio documentation** and course materials  
-- **Project specifications and test cases** provided by your instructor  
+⏱️ Time Required
 
----
+Approximately 30 hours are needed to complete this project, including:
+	•	5 in-class sessions
+	•	Homework, coding, testing, and validation
 
-## 🧠 Development Phases  
+⸻
 
-### Sessions 13 to 15: Apply Analysis and Design to Coding  
-- Apply problem-solving and algorithmic thinking.  
-- Implement processes based on design specifications.  
-- Add **input validation** and **error handling** for all user inputs.  
-- Use **iterative development** — revise logic as needed and update documentation.  
-- Record any **changes** made to design or logic and justify why.  
-- **Validate the solution** using the provided test cases.  
-- Update the documentation to reflect final changes.  
-- Submit the final version of the project.  
+🧰 Required Materials
+	•	Microsoft Visual Studio .NET (C#)
+	•	Course textbook or documentation
+	•	Project specifications and test cases provided by your instructor
 
----
+⸻
 
-## 🧪 Test Data  
+🧠 Development Phases
 
-| ID  | Firstname | Lastname | Purchase     | Comment                                                                 |
-|-----|------------|-----------|--------------|--------------------------------------------------------------------------|
-| 101 | Pulses     | Pulses pack | 381.65      | ✅ Works without issues                                                 |
-| 200 | Lemon      | Lemon Box  | 587.17      | ❌ Reject (ID should be 3 characters long)                              |
-| 234 | Mango      | Mango Box  | 587.17      | ✅ Works correctly                                                      |
-| 984 | Apple      | Apple Box  | Two hundred | ❌ Reject (price must be numeric)                                       |
-| Abc | Test       | Test description | 45       | ❌ Reject (ID must be numeric)                                          |
-| 1Ac | Test       | Test description | 20       | ❌ Reject (ID must be numeric)                                          |
+Session 11: Analysis and Design
+	•	Review project specifications and feature requirements.
+	•	Create flowcharts and/or pseudocode for the overall program.
+	•	Validate logic with your instructor before starting coding.
 
-> 💡 You should create additional test data to validate edge cases and exceptions.  
-Ensure that all generated errors are properly handled by the application.  
+Session 12: Detailing Logic and Setup
+	•	Refine process details per instructor feedback.
+	•	Set up project structure in Visual Studio.
+	•	Begin coding according to design documentation.
 
----
+Sessions 13 to 15: Apply Analysis and Design to Coding
+	•	Apply problem-solving skills.
+	•	Implement program processes according to specifications.
+	•	Add input validation and error handling for all data entry.
+	•	Use iterative development: revise logic as needed and update documentation.
+	•	Record any changes made to design or logic with justification.
+	•	Validate the solution using provided test cases.
+	•	Submit the final project.
 
-## 🧱 Folder Structure  
+⸻
 
-```bash
+🧪 Test Data
+
+ID	Firstname	Lastname	Purchase	Comment
+101	Pulses	Pulses pack	381.65	✅ Works without issues
+200	Lemon	Lemon Box	587.17	❌ Reject (ID must be 3 characters)
+234	Mango	Mango Box	587.17	✅ Works correctly
+984	Apple	Apple Box	Two hundred	❌ Reject (Price must be numeric)
+Abc	Test	Test description	45	❌ Reject (ID must be numeric)
+1Ac	Test	Test description	20	❌ Reject (ID must be numeric)
+
+💡 Additional test data should be created to test edge cases and exceptions.
+
+⸻
+
+🧱 Folder Structure
+
 CAVADA-MARC-PROJECT-CAPRFND/
 │
 ├── Program.cs                     # Main entry point
@@ -116,60 +130,47 @@ CAVADA-MARC-PROJECT-CAPRFND/
 
 ⚙️ How to Run the Application
 
-🖥️ Option 1 – Run from Visual Studio
+🖥️ Option 1 – Visual Studio
 	1.	Open Visual Studio.
 	2.	Go to File → Open → Project/Solution.
-	3.	Locate and open:
+	3.	Open CAVADA-MARC-PROJECT-CAPRFND.csproj.
+	4.	Build the project: Ctrl + Shift + B or Build → Build Solution.
+	5.	Run the program: F5 or Debug → Start Debugging.
+	6.	Follow prompts to test input, validation, and error handling.
 
-CAVADA-MARC-PROJECT-CAPRFND.csproj
-
-	4.	Build the project using Ctrl + Shift + B or Build → Build Solution.
-	5.	Run the program using F5 or Debug → Start Debugging.
-	6.	Follow the on-screen prompts to test input, view validation, and observe error messages.
-
-⸻
-
-💻 Option 2 – Run from Command Line (Mac or Windows)
+💻 Option 2 – Command Line (Mac or Windows)
 
 cd path/to/CAVADA-MARC-PROJECT-CAPRFND
 dotnet run
 
-Enter sample data as prompted (refer to the Test Data section).
-Observe input validation, exception handling, and correct output responses.
+	•	Enter sample data as prompted.
+	•	Observe input validation, exception handling, and correct output.
 
 ⸻
 
-🏆 Bonus Features (Optional Enhancements)
-
-If time allows, you may extend your application with these optional features:
-	1.	Auto-increment ID
-	•	Generate sequential item IDs automatically instead of requiring user input.
-	2.	Selectable Item List
-	•	Display a list of all item IDs for selection when viewing details.
-	3.	Highest Priced Item
-	•	Add an option to display the item with the highest purchase price.
-	4.	Sorting Functionality
-	•	Enable sorting before displaying all inventory items.
+🏆 Optional Enhancements (Bonus Features)
+	•	Auto-increment IDs for new items.
+	•	Display a list of all item IDs when selecting an item.
+	•	Show item with the highest purchase price.
+	•	Add sorting before displaying all inventory items.
 
 ⸻
 
 🧩 Key Concepts Demonstrated
-	•	Input Validation and Exception Handling
-	•	Conditional Statements and Loops
-	•	Arrays or Lists for Data Storage
-	•	Procedural Design and Modularization
-	•	Iterative Development
-	•	Testing and Debugging in Visual Studio
+	•	Input validation & exception handling
+	•	Conditional statements & loops
+	•	Arrays or lists for data storage
+	•	Procedural design & modularization
+	•	Iterative development
+	•	Testing & debugging in Visual Studio
 
 ⸻
 
 ✅ Submission Checklist
-
-Before submitting, ensure the following are complete:
 	•	✅ Functional C# application
-	•	✅ Updated design and logic documentation
-	•	✅ Complete test data and validation logs
-	•	✅ This README.mdx included in the repository
+	•	✅ Updated design & logic documentation
+	•	✅ Complete test data & validation logs
+	•	✅ README.mdx included in the repository
 
 ⸻
 
@@ -179,9 +180,5 @@ Marc Cavada
 Programming Fundamentals – CDI College
 Project: CA_PRFND – Inventory Management System
 
-⸻
+---
 
-
-
-Would you like me to now include a **Mermaid flowchart component** inside this MDX file (for example: data input → validation → display → error handling)?  
-It would render automatically if your docs site supports MDX.
