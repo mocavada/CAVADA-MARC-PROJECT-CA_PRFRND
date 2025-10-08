@@ -35,7 +35,7 @@ flowchart TD
     C -->|2. Display Item| I[Prompt User for ID]
     I --> J{ID Exists?}
     J -->|Yes| K[Display Item Details]
-    J -->|No| L[Display "Item Not Found"]
+    J -->|No| L[Display Item Not Found]
     K --> B
     L --> B
 
