@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>MarcCavadca_Assignment_CA_PFRND_1</RootNamespace>
+    <RootNamespace>CAVADA-MARC-PROJECT-CAPRFND</RootNamespace>
   </PropertyGroup>
 
 </Project>

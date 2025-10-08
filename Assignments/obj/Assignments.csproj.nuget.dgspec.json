@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/MarcCavadca-Assignment-CA-PFRND-1/Assignments/Assignments.csproj": {}
+    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/Assignments/Assignments.csproj": {}
   },
   "projects": {
-    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/MarcCavadca-Assignment-CA-PFRND-1/Assignments/Assignments.csproj": {
+    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/Assignments/Assignments.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/MarcCavadca-Assignment-CA-PFRND-1/Assignments/Assignments.csproj",
+        "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/Assignments/Assignments.csproj",
         "projectName": "Assignments",
-        "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/MarcCavadca-Assignment-CA-PFRND-1/Assignments/Assignments.csproj",
+        "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/Assignments/Assignments.csproj",
         "packagesPath": "/Users/mocavada/.nuget/packages/",
-        "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/MarcCavadca-Assignment-CA-PFRND-1/Assignments/obj/",
+        "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/Assignments/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mocavada/.nuget/NuGet/NuGet.Config"
