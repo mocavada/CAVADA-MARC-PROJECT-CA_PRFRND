@@ -41,7 +41,7 @@ flowchart TD
     N --> B
 
     C -->|4. Exit| O[Terminate Program]
-
+```
 
 🎯 Objectives
 
