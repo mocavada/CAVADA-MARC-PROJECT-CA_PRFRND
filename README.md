@@ -1,141 +1,166 @@
-# Project 1 - Programming Fundamentals Project  
-**Inventory Management System**
+Perfect 👏 Here’s your final polished README.md — now including a clear “How to Run” section for Visual Studio and command-line execution.
 
----
+⸻
 
-## Introduction
-Today is your first day on the job as a junior programmer. Your immediate supervisor has tasked you with developing an application prototype that simulates the capturing of basic inventory information.  
+🧩 Inventory Management System
 
-You are expected to deliver a functioning prototype in six days. This is your opportunity to showcase your **analysis, design, coding, and testing abilities** in **C# using Visual Studio IDE**.
+Project 1 – Programming Fundamentals (CA-PRFND)
 
----
+📘 Introduction
 
-## Objectives
-The main objectives of this project are to:  
-- Interpret specifications and perform analysis.  
-- Design a solution based on requirements and specifications.  
-- Design the logic required for a functional solution.  
-- Translate design documents and algorithms into source code.  
-- Use debugging tools and error-handling techniques.  
-- Validate the solution with test data.  
-- Integrate the knowledge acquired thus far.  
-- Use the features of Visual Studio IDE.  
-- Demonstrate the use of the C# programming language.  
-- Apply various program flow constructs.  
+This project is a prototype Inventory Management System developed in C# using Visual Studio .NET.
+It simulates capturing and managing basic inventory information, allowing users to input, validate, and display product records while handling errors gracefully.
 
----
+You have been tasked, as a junior programmer, to design, code, test, and document the solution. The prototype must be completed within six days, demonstrating your understanding of programming fundamentals, analysis, and iterative development.
 
-## Time Required
-You will require **30 hours** to complete this project.  
-This includes 5 in-class sessions plus homework time.  
+⸻
 
----
+🎯 Objectives
 
-## Required Material
-- Microsoft Visual Studio .NET (specifically C# .NET)  
-- Microsoft Visual Studio .NET documentation  
-- Course textbook or other reference material suggested/provided by your instructor  
+The main objectives of this project are to:
+	•	Interpret specifications and perform requirement analysis.
+	•	Design a functional solution based on requirements.
+	•	Apply program logic, structures, and error-handling.
+	•	Translate design into working source code in C#.
+	•	Debug, test, and validate input/output.
+	•	Use Visual Studio IDE features effectively.
+	•	Demonstrate knowledge of procedural flow and control structures.
 
----
+⸻
 
-## Requirements
+⏱️ Time Required
 
-### Part 1 – The Logic
-- Analyze the functionality of the project.  
-- Produce **program design documents** (flowcharts, pseudocode, class diagrams, etc.).  
-- Submit your design for **validation and approval** before coding.  
+You will need approximately 30 hours to complete this project.
+This includes 5 in-class sessions plus homework and testing.
 
-⚠️ *Failure to complete Part 1 and get instructor approval will result in losing marks for this part.*  
+⸻
 
----
+🧰 Required Materials
+	•	Microsoft Visual Studio .NET (C#)
+	•	Visual Studio documentation and course materials
+	•	Project specifications and test cases provided by your instructor
 
-### Part 2 – Interpret the Program Logic to Write Source Code
-- Translate your approved logic into C# code.  
-- Ensure that your code flow matches your design.  
-- Example: if you designed a `while` loop in your logic, implement the same in code.  
+⸻
 
-**Error Management & Testing**
-- Test as you build.  
-- Add input validation and error-handling at every step.  
-- Ensure captured data is valid and matches expected types.  
+🧠 Development Phases
 
----
+Sessions 13 to 15: Apply Analysis and Design to Coding
+	•	Apply problem-solving and algorithmic thinking.
+	•	Implement processes based on design specifications.
+	•	Add input validation and error handling for all user inputs.
+	•	Use iterative development — revise logic as needed and update documentation.
+	•	Record any changes made to design or logic and justify why.
+	•	Validate the solution using the provided test cases.
+	•	Update the documentation to reflect final changes.
+	•	Submit the final version of the project.
 
-## Schedule
+⸻
 
-### Session 11 – Analysis and Design
-- Analyze project specs and requirements.  
-- Create design documentation (at least 2 types, e.g., flowchart + pseudocode/class diagram).  
-- Validate logic with your instructor.  
+🧪 Test Data
 
-### Session 12 – Detailing Processes
-- Finalize each process with sufficient detail.  
-- Adjust based on instructor feedback.  
-- Create project structure in Visual Studio.  
-- Begin coding according to logic documentation.  
+ID	Firstname	Lastname	Purchase	Comment
+101	Pulses	Pulses pack	381.65	✅ Works without issues
+200	Lemon	Lemon Box	587.17	❌ Reject (ID should be 3 characters long)
+234	Mango	Mango Box	587.17	✅ Works correctly
+984	Apple	Apple Box	Two hundred	❌ Reject (price must be numeric)
+Abc	Test	Test description	45	❌ Reject (ID must be numeric)
+1Ac	Test	Test description	20	❌ Reject (ID must be numeric)
 
-### Sessions 13 to 15 – Coding and Refinement
-- Apply problem-solving skills.  
-- Code the various processes according to specs.  
-- Add input validation and error-handling.  
-- Revise logic iteratively as needed (update design docs accordingly).  
-- Document any changes to your logic/design and explain your reasoning.  
-- Validate the solution using test cases.  
-- Add any missing error-handling or validation.  
-- Update the documentation.  
-- Submit the project.  
+💡 You should create additional test data to validate edge cases and exceptions.
+Ensure that all generated errors are properly handled by the application.
 
----
+⸻
 
-## Test Data
+🧱 Folder Structure
 
-Use the following **test data** to verify the basic functionality of your application.  
-Test both valid and invalid entries to check error-handling.
+CAVADA-MARC-PROJECT-CAPRFND/
+│
+├── Program.cs                     # Main entry point
+├── appsettings.json               # App configuration
+├── appsettings.Development.json   # Development config
+├── Properties/                    # Project metadata
+├── bin/                           # Compiled binaries
+├── obj/                           # Build files
+├── Assignments/                   # Design & documentation
+└── CAVADA-MARC-PROJECT-CAPRFND.csproj # Project file
 
-| ID   | Firstname | Lastname | Purchase      | Comment |
-|------|-----------|----------|---------------|---------|
-| 101  | Pulses    | Pulses   | pack 381.65   | ✅ Should work without issues |
-| 200  | Lemon     | Lemon    | Box 587.17    | ❌ Reject – ID not valid (must be 3 characters long) |
-| 234  | Mango     | Mango    | Box 587.17    | ✅ Should work correctly |
-| 984  | Apple     | Apple    | Box "Two hundred" | ❌ Reject – Price must be numeric |
-| Abc  | Test      | Test     | description 45| ❌ Reject – ID not numerical |
-| 1Ac  | Test      | Test     | description 20| ❌ Reject – ID not numerical |
 
-👉 You must also create **additional test data** to fully validate your application.  
-👉 Submit your test data along with your program so your instructor can test it.  
+⸻
 
-**Important:** Ensure all validation errors are properly handled and user-friendly.  
+⚙️ How to Run the Application
 
----
+🖥️ Option 1 – Run from Visual Studio
+	1.	Open Visual Studio.
+	2.	Go to File > Open > Project/Solution.
+	3.	Locate and open:
 
-## Bonus Features (Optional – Extra Marks)
-If time allows, you can extend the project with additional features:  
+CAVADA-MARC-PROJECT-CAPRFND.csproj
 
-1. **Auto-generate Sequential IDs**  
-   - Instead of entering a 3-digit ID, the system assigns the next sequential ID automatically.  
 
-2. **Display Item Selection List**  
-   - When displaying a specific item, show a list of available item IDs to choose from.  
+	4.	Build the project using Ctrl + Shift + B or by selecting Build > Build Solution.
+	5.	Run the program using F5 or Debug > Start Debugging.
+	6.	Follow on-screen prompts to test input, view validation, and see error messages.
 
-3. **Show Item with Highest Price**  
-   - Add a menu option that finds and displays the most expensive item.  
+⸻
 
-4. **Sorting Feature**  
-   - Sort items before displaying them in the "Display All" option.  
+💻 Option 2 – Run from Command Line (Mac or Windows)
+	1.	Open your terminal or command prompt.
+	2.	Navigate to your project folder:
 
----
+cd path/to/CAVADA-MARC-PROJECT-CAPRFND
 
-## Deliverables
-- Design documentation (flowcharts, pseudocode, diagrams).  
-- C# Source code implementation.  
-- Test data file (with expected outcomes).  
-- Final project submission with updated documentation.  
 
----
+	3.	Run the project:
 
-## Notes
-- Follow your initial plan but adjust iteratively when needed.  
-- Clearly document any changes and the reasons.  
-- Ensure the application is tested, validated, and functional before submission.  
+dotnet run
 
----
+
+	4.	Enter sample data as prompted (refer to the test data section).
+	5.	Observe input validation, exception handling, and correct output responses.
+
+⸻
+
+🏆 Bonus Features (Optional Enhancements)
+
+If time allows, you may extend your application with these optional features:
+	1.	Auto-increment ID
+	•	Generate sequential item IDs automatically instead of requiring user input.
+	2.	Selectable Item List
+	•	Display a list of all item IDs for selection when viewing details.
+	3.	Highest Priced Item
+	•	Add an option to display the item with the highest purchase price.
+	4.	Sorting Functionality
+	•	Enable sorting before displaying all inventory items.
+
+⸻
+
+🧩 Key Concepts Demonstrated
+	•	Input Validation and Exception Handling
+	•	Conditional Statements and Loops
+	•	Arrays or Lists for Data Storage
+	•	Procedural Design and Modularization
+	•	Iterative Development
+	•	Testing and Debugging in Visual Studio
+
+⸻
+
+✅ Submission Checklist
+
+Before submitting, make sure you have:
+	•	✅ A fully functional C# application
+	•	✅ Updated design and logic documentation
+	•	✅ Complete test data and validation logs
+	•	✅ This README.md included in your repository
+
+⸻
+
+👨‍💻 Author
+
+Marc Cavada
+Programming Fundamentals – CDI College
+Project: CA_PRFND – Inventory Management System
+
+⸻
+
+Would you like me to now generate a visual diagram (flowchart) of the logic for your Program.cs — like how input, validation, and display are structured?
+It would make your README even more complete visually.
