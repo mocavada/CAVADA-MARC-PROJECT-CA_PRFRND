@@ -11,8 +11,6 @@ author: "Marc Cavada"
 This project is a **prototype Inventory Management System** developed in **C# using Visual Studio .NET**.  
 It simulates capturing and managing basic inventory information, allowing users to input, validate, and display product records while handling errors gracefully.  
 
-You have been tasked, as a **junior programmer**, to design, code, test, and document the solution. The prototype must be completed within **six days**, demonstrating your understanding of programming fundamentals, analysis, and iterative development.  
-
 ---
 
 ## 📊 Program Flow (Mermaid Diagram)
@@ -44,8 +42,7 @@ flowchart TD
 
     C -->|4. Exit| O[Terminate Program]
 
-
-⸻
+---
 
 🎯 Objectives
 
