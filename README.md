@@ -25,7 +25,6 @@ are available on GitHub:
 
 ---
 
-Perfect! Here’s your full README in Markdown syntax, ready for direct copy-and-paste into a .md file, with all code blocks properly fenced:
 
 ## Project 2 – ATM Teller Simulation
 
@@ -613,7 +612,4 @@ Programming Fundamentals – CDI College
 Project: CA_PRFND – Inventory Management System
 
 ✅ This version is **GitHub-ready**:  
-All C#, XML, and HTTP blocks are fenced separately.  
-Mermaid diagram is standalone.  
-Folder structure uses its own code block.  
-Text and headings are outside code blocks, so everything renders correctly.  
+ 
