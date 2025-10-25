@@ -485,7 +485,7 @@ Swagger UI: <https://localhost:7255/swagger>
 
 ### Teller API
 
-![Teller API Diagram](./images/diag-project2-3.png)
+![Teller API Diagram](./images/diag-project2-1.png)
 
 ```mermaid
 flowchart TD
