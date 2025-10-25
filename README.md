@@ -300,14 +300,13 @@ namespace TellerAPI.Services
     }
 }
 
-```
-
 ⸻
 
 📂 Data Files
 
-TellerAPI/Data/
- Accounts.txt – Each line: <AccountType>,<AccountNumber>,<CustomerID>,<Balance>
+TellerAPI/Data/Accounts.txt – Each line: <AccountType>,<AccountNumber>,<CustomerID>,<Balance>
+
+```
 
 Example: Checking,10001,D001,457.98
  • Customers.txt – Optional customer info
