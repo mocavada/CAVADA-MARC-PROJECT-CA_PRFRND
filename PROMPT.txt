@@ -59,3 +59,176 @@ Exit:
 ✅ All steps checked → TellerAPI fully functional and fallback verified
 
 ⸻
+
+
+PROJECT REQUIREMENTS CHECKLIST:
+
+⸻
+
+PART 1: Analysis and Design (Sessions 5–7)
+
+Requirements covered:
+	•	Analyzed the project specifications: ATM with two account types (Checking, Savings), deposit/withdraw/check balance.
+	•	Compared sample application vs. specs: SQL database fallback to .txt files, TPH inheritance for EF Core.
+	•	Noted similarities/differences: Both account types share base Account methods; Checking/Savings only differ conceptually, not behaviorally in current implementation.
+	•	Created (or discussed creating) data dictionary, relationship diagram, and DFD:
+	•	Data Dictionary: Accounts and Customers tables, fields, types, primary/foreign keys.
+	•	Relationship Diagram: One-to-many Customer → Accounts.
+	•	DFD: Input → ATMService → Bank → Account actions → Output (balance, confirmation messages).
+
+✅ Part 1 conceptual coverage complete. Diagrams and formal submission can be created from these notes.
+
+⸻
+
+PART 2: Build Logic (Sessions 8–11)
+
+Requirements covered:
+	•	Classes identified:
+	•	Account (abstract), CheckingAccount, SavingsAccount, Customer, Bank, TellerDbContext.
+	•	Properties and Methods:
+	•	Account: Deposit(), Withdraw(), ToString().
+	•	Bank: FindAccount(), load from SQL or .txt.
+	•	Inheritance / Overrides: CheckingAccount and SavingsAccount inherit from Account.
+	•	Processes analyzed: ATM login, transaction menu, deposit, withdraw, balance check, SQL fallback.
+	•	Flowcharts / Pseudocode: Covered in the ATMService logic and the “TellerAPI Test Scenario Script” we created.
+
+✅ Part 2 logic coverage is complete; you can produce formal flowcharts/pseudocode for submission.
+
+⸻
+
+PART 3: Implementation (Sessions 12–15)
+
+Requirements covered:
+	•	Classes implemented: Base + derived classes, Bank as collection handler.
+	•	Client application: Program.cs interacts with ATMService.
+	•	Input validation & error-handling: Validates account numbers, positive deposits, withdrawal limits.
+	•	Iterative development: SQL fallback, .txt loading, EF Core inheritance, refined ATMService loop.
+	•	Test cases: Provided in “TellerAPI Test Scenario Script”.
+	•	Documentation update: Test script, data dictionary, SQL schema, class explanations.
+
+✅ Part 3 coding is complete for current feature set; next steps would be adding transaction history, multiple accounts per customer, or UI improvements.
+
+⸻
+
+Next Step for Submissions
+	1.	Design folder (_design)
+	•	Include DFD, relationship diagram, and data dictionary as PDF/PNG.
+	2.	Logic folder (_logic)
+	•	Include class/property/method mapping and flowcharts/pseudocode.
+	3.	Code folder (_code)
+	•	Include all .cs files, .txt data, and ATM.sql.
+	4.	Project documentation (_project_documentation.pdf)
+	•	Title page, table of contents, project specs, features (working/partially/not done), and explanation of any modifications.
+	5.	Final zip: NAME_COURSE_ASSIGNMENT_final_project.zip containing all folders above.
+
+⸻
+
+CA-PRTQS: TellerAPI Project Submission Template
+
+File naming convention:
+CAVADAMARC_FM50D_A01 (replace YourName and FM50D_A01 accordingly)
+
+Final zip structure:
+
+CAVADAMARC_FM50D_A01_final_project/
+│
+├── design/
+│   ├── DataDictionary.pdf
+│   ├── RelationshipDiagram.png
+│   └── DFD.png
+│
+├── logic/
+│   ├── ClassMethodsRelationships.pdf
+│   ├── Flowcharts.pdf
+│   └── Pseudocode.pdf
+│
+├── code/
+│   ├── TellerAPI/
+│   │   ├── Program.cs
+│   │   ├── ATMService.cs
+│   │   ├── Bank.cs
+│   │   ├── Models/
+│   │   │   ├── Account.cs
+│   │   │   ├── CheckingAccount.cs
+│   │   │   ├── SavingsAccount.cs
+│   │   │   ├── Customer.cs
+│   │   │   └── TellerDbContext.cs
+│   │   └── Data/
+│   │       ├── Accounts.txt
+│   │       └── Customers.txt
+│   └── ATM.sql
+│
+└── project_documentation.pdf
+
+
+⸻
+
+1️⃣ Design Folder (_design)
+	•	DataDictionary.pdf
+	•	List all fields for Accounts and Customers with data types, constraints, and description.
+	•	RelationshipDiagram.png
+	•	One-to-many Customer → Accounts. Show primary/foreign keys.
+	•	DFD.png
+	•	Level 0: User → ATMService → Bank → Account actions → Output
+	•	Optional Level 1: Include SQL fallback vs. .txt loading
+
+⸻
+
+2️⃣ Logic Folder (_logic)
+	•	ClassMethodsRelationships.pdf
+	•	Table format:
+
+Class | Properties | Methods | Inheritance | Notes
+Account | AccountNumber, CustomerID, Balance | Deposit(), Withdraw(), ToString() | Base | Abstract
+CheckingAccount | — | — | Account | Derived
+SavingsAccount | — | — | Account | Derived
+Customer | CustomerID, Name | — | — | —
+Bank | List<Account>, List<Customer> | FindAccount(), LoadFromFiles() | — | Collection handler
+
+
+	•	Flowcharts.pdf
+	•	ATMService process: login → transaction loop → deposit/withdraw/check balance → exit
+	•	Pseudocode.pdf
+	•	Example snippet:
+
+WHILE account NOT selected
+    PROMPT user for account number
+    IF account exists
+        SET _currentAccount
+    ELSE
+        DISPLAY "Account not found"
+LOOP
+DISPLAY menu (Deposit, Withdraw, Check Balance, Exit)
+
+
+
+⸻
+
+3️⃣ Code Folder (_code)
+	•	All .cs files including Program.cs, ATMService.cs, Bank.cs, Models folder.
+	•	Data folder with Accounts.txt and Customers.txt.
+	•	ATM.sql for database creation and initial records.
+
+⸻
+
+4️⃣ Project Documentation (project_documentation.pdf)
+
+Include:
+	1.	Title page: Your Name, Submission Date, Instructor’s Name
+	2.	Table of Contents
+	3.	Project specifications
+	4.	Explanations of any additions or changes (SQL fallback, TPH inheritance)
+	5.	List of features:
+
+Feature | Status | Notes
+Deposit | Working | Validates positive input
+Withdraw | Working | Handles insufficient funds
+Check Balance | Working | Shows accurate balance
+SQL Fallback | Working | Loads from .txt when SQL fails
+
+
+	6.	Screenshots of console output (optional)
+	7.	References (if any)
+
+⸻
+
