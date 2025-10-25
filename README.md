@@ -1,6 +1,3 @@
-⸻
-
-
 ---
 title: "Inventory Management System"
 description: "C# Programming Fundamentals Project by Marc Cavada"
