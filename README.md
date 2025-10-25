@@ -523,7 +523,7 @@ flowchart TD
 
     E -->|Supervisor Mode| W[Login as Admin]
     W --> X[Access Admin Menu]
-    X -->|Pay Interest
+    X -->|Pay Interest| Y[Apply Interest to Accounts]
 ```
 
 ### Inventory API
