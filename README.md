@@ -526,6 +526,8 @@ flowchart TD
     X -->|Pay Interest| Y[Apply Interest to Accounts]
 ```
 
+---
+
 ### Inventory API
 
 ![Inventory API Diagram](./images/diag-project2-3.png)
