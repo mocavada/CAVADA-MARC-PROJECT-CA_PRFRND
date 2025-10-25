@@ -11,14 +11,14 @@ namespace TellerAPI.Models
         public List<Account> Accounts { get; private set; } = new();
         public List<Customer> Customers { get; private set; } = new();
 
-        // EF Core constructor
+        // SQL-backed constructor
         public Bank(TellerDbContext context)
         {
             _context = context;
             LoadAccounts();
         }
 
-        // Text file fallback constructor
+        // Text-file fallback constructor
         public Bank(List<Account> accounts, List<Customer> customers)
         {
             Accounts = accounts;
@@ -34,8 +34,8 @@ namespace TellerAPI.Models
             }
         }
 
-        public Account? FindAccount(string accountNumber) =>
-            Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber);
+        public Account? FindAccount(string accountNumber)
+            => Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber);
 
         // Load from text files
         public static (List<Account> Accounts, List<Customer> Customers) LoadFromFiles(string dataFolder)
@@ -52,13 +52,7 @@ namespace TellerAPI.Models
                 {
                     var parts = line.Split(',');
                     if (parts.Length >= 2)
-                    {
-                        customers.Add(new Customer
-                        {
-                            Name = parts[0],
-                            CustomerID = parts[1]
-                        });
-                    }
+                        customers.Add(new Customer { Name = parts[0], CustomerID = parts[1] });
                 }
             }
 
@@ -69,12 +63,15 @@ namespace TellerAPI.Models
                     var parts = line.Split(',');
                     if (parts.Length >= 4 && decimal.TryParse(parts[3], out decimal balance))
                     {
-                        accounts.Add(new SavingsAccount
-                        {
-                            CustomerID = parts[1],
-                            AccountNumber = parts[2],
-                            Balance = balance
-                        });
+                        Account account = parts[0] == "C"
+                            ? new CheckingAccount()
+                            : new SavingsAccount();
+
+                        account.AccountNumber = parts[2];
+                        account.CustomerID = parts[1];
+                        account.Balance = balance;
+
+                        accounts.Add(account);
                     }
                 }
             }

@@ -1,82 +1,48 @@
 ﻿using System;
 using System.IO;
-using TellerAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.SqlClient;
+using TellerAPI.Models;
+using TellerAPI.Services;   // <--- Add this
 
-namespace TellerAPI
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
+        Bank bank;
+
+        try
         {
-            Bank bank;
+            var optionsBuilder = new DbContextOptionsBuilder<TellerDbContext>();
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ATM;User Id=sa;Password=YourStrong!Pass123;");
+            using var context = new TellerDbContext(optionsBuilder.Options);
 
-            try
+            if (context.Database.CanConnect())
             {
-                // Build the EF Core context options
-                var optionsBuilder = new DbContextOptionsBuilder<TellerDbContext>();
-                optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ATM;User Id=sa;Password=YourStrong!Pass123;TrustServerCertificate=True;");
-
-                using var context = new TellerDbContext(optionsBuilder.Options);
-
-                // Try connecting to the database
-                if (context.Database.CanConnect())
-                {
-                    Console.WriteLine("✅ Connected to SQL Server.");
-                    bank = new Bank(context);
-                }
-                else
-                {
-                    throw new Exception("Database connection failed.");
-                }
+                Console.WriteLine("✅ Connected to SQL Server.");
+                bank = new Bank(context);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"⚠️ SQL connection failed: {ex.Message}");
-                Console.WriteLine("Switching to local text data...\n");
-
-                string dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
-
-                if (!Directory.Exists(dataFolder))
-                {
-                    Console.WriteLine($"❌ Data folder not found: {dataFolder}");
-                    return;
-                }
-
-                var (accounts, customers) = Bank.LoadFromFiles(dataFolder);
-                bank = new Bank(accounts, customers);
+                Console.WriteLine("⚠️ SQL Server is not reachable. Using local text data...");
+                LoadLocalData(out bank);
             }
-
-            Console.WriteLine("\n🏦 Welcome to the Teller API\n");
-            Console.WriteLine($"Loaded {bank.Accounts.Count} accounts from source.\n");
-
-            while (true)
-            {
-                Console.Write("Enter your account number: ");
-                var input = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("⚠️ Please enter a valid account number.\n");
-                    continue;
-                }
-
-                // Use your Bank class to find the account
-                var account = bank.FindAccount(input);
-
-                if (account == null)
-                {
-                    Console.WriteLine("❌ Account not found. Try again.\n");
-                    continue;
-                }
-
-                Console.WriteLine($"✅ Found Account:\n  Number: {account.AccountNumber}\n  Balance: {account.Balance:C}\n");
-                break;
-            }
-
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
         }
+        catch (Exception ex)  // catch general exceptions from EF/SQL
+        {
+            Console.WriteLine($"⚠️ SQL connection failed: {ex.Message}");
+            LoadLocalData(out bank);
+        }
+
+        // Start ATM
+        var atm = new ATMService(bank);
+        atm.Start();
+    }
+
+    static void LoadLocalData(out Bank bank)
+    {
+        string dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
+        var (accounts, customers) = Bank.LoadFromFiles(dataFolder);
+        bank = new Bank(accounts, customers);
+        Console.WriteLine($"\n🏦 Loaded {accounts.Count} accounts from local text data.");
     }
 }

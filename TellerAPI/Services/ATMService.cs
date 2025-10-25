@@ -8,19 +8,14 @@ namespace TellerAPI.Services
         private readonly Bank _bank;
         private Account? _currentAccount;
 
-        public ATMService(Bank bank)
-        {
-            _bank = bank;
-        }
+        public ATMService(Bank bank) => _bank = bank;
 
         public void Start()
         {
-            Console.WriteLine("🏦 Welcome to the Teller API");
-
             // Login / select account
             while (_currentAccount == null)
             {
-                Console.Write("\nEnter your account number: ");
+                Console.Write("Enter your account number: ");
                 string? accNumber = Console.ReadLine()?.Trim();
 
                 if (string.IsNullOrEmpty(accNumber))
@@ -32,9 +27,7 @@ namespace TellerAPI.Services
                 _currentAccount = _bank.FindAccount(accNumber);
 
                 if (_currentAccount == null)
-                {
                     Console.WriteLine("❌ Account not found. Try again.");
-                }
             }
 
             Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerID}!");
@@ -43,7 +36,7 @@ namespace TellerAPI.Services
             while (true)
             {
                 Console.WriteLine("\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit");
-                Console.Write("\nSelect an option: ");
+                Console.Write("Select an option: ");
                 string? input = Console.ReadLine()?.Trim();
 
                 switch (input)
@@ -69,11 +62,7 @@ namespace TellerAPI.Services
 
         private void HandleDeposit()
         {
-            if (_currentAccount == null)
-            {
-                Console.WriteLine("⚠️ No account selected.");
-                return;
-            }
+            if (_currentAccount == null) return;
 
             Console.Write("Enter deposit amount: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal amount))
@@ -96,11 +85,7 @@ namespace TellerAPI.Services
 
         private void HandleWithdrawal()
         {
-            if (_currentAccount == null)
-            {
-                Console.WriteLine("⚠️ No account selected.");
-                return;
-            }
+            if (_currentAccount == null) return;
 
             Console.Write("Enter withdrawal amount: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal amount))
@@ -125,12 +110,7 @@ namespace TellerAPI.Services
 
         private void ShowBalance()
         {
-            if (_currentAccount == null)
-            {
-                Console.WriteLine("⚠️ No account selected.");
-                return;
-            }
-
+            if (_currentAccount == null) return;
             Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}");
         }
     }
