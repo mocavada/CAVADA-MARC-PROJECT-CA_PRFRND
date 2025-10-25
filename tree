@@ -1,5 +1,4 @@
 ./
-├── -L
 ├── appsettings.Development.json
 ├── appsettings.json
 ├── bin/
@@ -69,4 +68,4 @@
 │   └── TellerAPI.csproj
 └── tree
 
-23 directories, 47 files
+23 directories, 46 files
