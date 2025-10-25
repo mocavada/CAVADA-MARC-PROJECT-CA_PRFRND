@@ -175,7 +175,7 @@ Swagger UI: https://localhost:7255/swagger
 
 📊 Program Flow (Mermaid Diagram)
 
-flowchart TD
+```flowchart TD
     Start[Start API] --> Root[Swagger / Root Endpoint]
     Root --> Select{Select Endpoint}
 
@@ -192,7 +192,7 @@ flowchart TD
     Validate --> |Valid| Insert[Insert into DB]
     Validate --> |Invalid| BadRequest[Return 400 Bad Request]
     Insert --> Created[Return Created Response]
-
+```
 
 ⸻
 
@@ -218,7 +218,6 @@ InventoryAPI/
 ├── obj/
 └── InventoryAPI.csproj
 
-
 ⸻
 
 👨‍💻 Author
@@ -228,8 +227,7 @@ Programming Fundamentals – CDI College
 Project: CA_PRFND – Inventory Management System
 
 ✅ This version is **GitHub-ready**:  
-- All C#, XML, and HTTP blocks are fenced separately.  
-- Mermaid diagram is standalone.  
-- Folder structure uses its own code block.  
-- Text and headings are outside code blocks, so everything renders correctly.  
-
+All C#, XML, and HTTP blocks are fenced separately.  
+Mermaid diagram is standalone.  
+Folder structure uses its own code block.  
+Text and headings are outside code blocks, so everything renders correctly.  
