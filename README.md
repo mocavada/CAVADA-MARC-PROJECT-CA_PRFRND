@@ -13,11 +13,7 @@ developed in **C# using .NET 9 and Visual Studio Code**. It captures and manages
 
 ---
 
-## Project 2 – ATM Teller Simulation
-
-Programming Techniques (CA-PRTQS)
-
-### 🔗 Project Repository
+## 🔗 Project Repository
 
 The source code and full project files for:
 
@@ -26,6 +22,12 @@ The source code and full project files for:
 
 are available on GitHub:  
 [https://github.com/mocavada/CAVADA-MARC-PROJECT-CA_PR](https://github.com/mocavada/CAVADA-MARC-PROJECT-CA_PR)
+
+---
+
+## Project 2 – ATM Teller Simulation
+
+Programming Techniques (CA-PRTQS)
 
 ---
 
