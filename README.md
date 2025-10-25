@@ -15,7 +15,251 @@ It captures and manages inventory items using **EF Core and SQLite**, exposing a
 
 ## 📂 TellerAPI – Code Files
 
-Perfect! Here’s an updated README section including the expected Accounts.txt format:
+### Program.cs
+
+```csharp
+using System;
+using TellerAPI.Models;
+using TellerAPI.Services;
+
+namespace TellerAPI
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Bank bank = new Bank();
+            var atm = new ATMService(bank);
+            atm.Start();
+        }
+    }
+}
+```
+
+### Models/Account.cs
+
+```csharp
+namespace TellerAPI.Models
+{
+    public abstract class Account
+    {
+        public string AccountNumber { get; set; } = string.Empty;
+        public string CustomerName { get; set; } = string.Empty;
+        public decimal Balance { get; protected set; }
+
+        public virtual void Deposit(decimal amount)
+        {
+            if (amount <= 0)
+                throw new ArgumentException("Deposit amount must be positive.");
+            Balance += amount;
+        }
+
+        public virtual bool Withdraw(decimal amount)
+        {
+            if (amount <= 0)
+                throw new ArgumentException("Withdrawal amount must be positive.");
+            if (Balance < amount)
+                return false;
+
+            Balance -= amount;
+            return true;
+        }
+
+        public override string ToString() =>
+            $"{AccountNumber} | {CustomerName} | Balance: {Balance:C}";
+    }
+}
+```
+
+### Models/CheckingAccount.cs & SavingAccount.cs
+
+```csharp
+namespace TellerAPI.Models
+{
+    public class CheckingAccount : Account { }
+    public class SavingAccount : Account { }
+}
+```
+
+### Models/Bank.cs
+
+```csharp
+using System.Collections.Generic;
+using TellerAPI.Services;
+
+namespace TellerAPI.Models
+{
+    public class Bank
+    {
+        private readonly FileService _fileService;
+        public List<Account> Accounts { get; private set; } = new();
+
+        public Bank()
+        {
+            _fileService = new FileService();
+            LoadAccounts();
+        }
+
+        private void LoadAccounts()
+        {
+            var lines = _fileService.ReadFile("Accounts.txt");
+            foreach (var line in lines)
+            {
+                var parts = line.Split(',');
+                if (parts.Length < 4) continue;
+
+                string type = parts[0];
+                string number = parts[1];
+                string name = parts[2];
+                decimal balance = decimal.Parse(parts[3]);
+
+                Account account = type switch
+                {
+                    "Checking" => new CheckingAccount { AccountNumber = number, CustomerName = name, Balance = balance },
+                    "Saving" => new SavingAccount { AccountNumber = number, CustomerName = name, Balance = balance },
+                    _ => null
+                };
+
+                if (account != null)
+                    Accounts.Add(account);
+            }
+        }
+    }
+}
+```
+
+### Services/FileService.cs
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace TellerAPI.Services
+{
+    public class FileService
+    {
+        private readonly string _dataPath = AppContext.BaseDirectory + "Data/";
+
+        public List<string> ReadFile(string fileName)
+        {
+            string path = Path.Combine(_dataPath, fileName);
+            if (!File.Exists(path)) return new List<string>();
+            return new List<string>(File.ReadAllLines(path));
+        }
+
+        public void WriteFile(string fileName, List<string> lines)
+        {
+            string path = Path.Combine(_dataPath, fileName);
+            File.WriteAllLines(path, lines);
+        }
+
+        public void AppendLine(string fileName, string line)
+        {
+            string path = Path.Combine(_dataPath, fileName);
+            File.AppendAllText(path, line + Environment.NewLine);
+        }
+    }
+}
+```
+
+### Services/ATMService.cs
+
+```csharp
+using System;
+using TellerAPI.Models;
+
+namespace TellerAPI.Services
+{
+    public class ATMService
+    {
+        private readonly Bank _bank;
+
+        public ATMService(Bank bank)
+        {
+            _bank = bank;
+        }
+
+        public void Start()
+        {
+            Console.WriteLine("🏦 Welcome to the Teller API");
+
+            while (true)
+            {
+                Console.Write("\nEnter your account number: ");
+                string? number = Console.ReadLine();
+                var account = _bank.Accounts.Find(a => a.AccountNumber == number);
+
+                if (account == null)
+                {
+                    Console.WriteLine("❌ Account not found. Try again.");
+                    continue;
+                }
+
+                Console.WriteLine($"\nWelcome, {account.CustomerName}!");
+                Console.WriteLine("1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit");
+
+                while (true)
+                {
+                    Console.Write("\nSelect an option: ");
+                    var input = Console.ReadLine();
+
+                    switch (input)
+                    {
+                        case "1":
+                            Console.Write("Enter deposit amount: ");
+                            if (decimal.TryParse(Console.ReadLine(), out decimal deposit))
+                            {
+                                account.Deposit(deposit);
+                                Console.WriteLine($"✅ New Balance: {account.Balance:C}");
+                            }
+                            break;
+                        case "2":
+                            Console.Write("Enter withdrawal amount: ");
+                            if (decimal.TryParse(Console.ReadLine(), out decimal withdraw))
+                            {
+                                if (account.Withdraw(withdraw))
+                                    Console.WriteLine($"✅ New Balance: {account.Balance:C}");
+                                else
+                                    Console.WriteLine("❌ Insufficient funds!");
+                            }
+                            break;
+                        case "3":
+                            Console.WriteLine($"💰 Current Balance: {account.Balance:C}");
+                            break;
+                        case "4":
+                            Console.WriteLine("👋 Thank you for using TellerAPI!");
+                            return;
+                        default:
+                            Console.WriteLine("Invalid option. Try again.");
+                            break;
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+### TellerAPI.csproj
+
+```csharp
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
+```
+
+### Data Files
+
+TellerAPI/Data/
+├── Accounts.txt       # Holds account information
+├── Customers.txt      # Optional: customer data
+└── DailyBalances.txt  # Optional: daily transaction records
 
 ⸻
 
