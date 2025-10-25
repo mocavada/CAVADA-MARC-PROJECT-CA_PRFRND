@@ -25,8 +25,6 @@ are available on GitHub:
 
 ---
 
-Perfect! Here’s your full README in Markdown syntax, ready for direct copy-and-paste into a .md file, with all code blocks properly fenced:
-
 ## Project 2 – ATM Teller Simulation
 
 Programming Techniques (CA-PRTQS)
@@ -56,10 +54,11 @@ namespace TellerAPI
     }
 }
 
+```
 
-⸻
+### Models/Account.cs
 
-Models/Account.cs
+```csharp
 
 using System;
 
@@ -95,20 +94,24 @@ namespace TellerAPI.Models
 }
 
 
-⸻
+```
 
-Models/CheckingAccount.cs & Models/SavingAccount.cs
+### Models/CheckingAccount.cs & SavingAccount.cs
+
+```csharp
 
 namespace TellerAPI.Models
 {
-    public class CheckingAccount : Account { }
-    public class SavingAccount : Account { }
+    public class CheckingAccount : Account
+    {
+    }
 }
 
+```
 
-⸻
+### Models/Bank.cs
 
-Models/Bank.cs
+```csharp
 
 using System;
 using System.Collections.Generic;
@@ -136,39 +139,48 @@ namespace TellerAPI.Models
                 var parts = line.Split(',');
                 if (parts.Length < 4) continue;
 
-                string type = parts[0].Trim();           
-                string accountNumber = parts[1].Trim();  
-                string customerId = parts[2].Trim();     
+                string type = parts[0].Trim();           // "C" or "S"
+                string customerId = parts[1].Trim();     // e.g., "D001"
+                string accountNumber = parts[2].Trim();  // e.g., "10001"
                 if (!decimal.TryParse(parts[3], out decimal balance))
                     balance = 0;
 
                 Account? account = type switch
                 {
-                    "Checking" => new CheckingAccount { CustomerID = customerId, AccountNumber = accountNumber },
-                    "Saving" => new SavingAccount { CustomerID = customerId, AccountNumber = accountNumber },
+                    "C" => new CheckingAccount { CustomerID = customerId, AccountNumber = accountNumber },
+                    "S" => new SavingAccount { CustomerID = customerId, AccountNumber = accountNumber },
                     _ => null
                 };
 
-                if (account != null && balance > 0)
-                    account.Deposit(balance);
-
                 if (account != null)
+                {
+                    if (balance > 0)
+                        account.Deposit(balance); // use Deposit to set initial balance safely
                     Accounts.Add(account);
+                }
             }
         }
 
-        public Account? GetAccount(string accountNumber) =>
-            Accounts.Find(a => a.AccountNumber == accountNumber);
+        // Helper method to find an account by account number
+        public Account? GetAccount(string accountNumber)
+        {
+            return Accounts.Find(a => a.AccountNumber == accountNumber);
+        }
 
-        public List<Account> GetAccountsByCustomer(string customerId) =>
-            Accounts.FindAll(a => a.CustomerID == customerId);
+        // Optional helper to find accounts by CustomerID
+        public List<Account> GetAccountsByCustomer(string customerId)
+        {
+            return Accounts.FindAll(a => a.CustomerID == customerId);
+        }
     }
 }
 
 
-⸻
+```
 
-Services/FileService.cs
+### Services/FileService.cs
+
+```csharp
 
 using System;
 using System.Collections.Generic;
@@ -182,6 +194,7 @@ namespace TellerAPI.Services
 
         public FileService()
         {
+            // Use project-relative path
             _dataPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Data");
         }
 
@@ -210,10 +223,11 @@ namespace TellerAPI.Services
     }
 }
 
+```
 
-⸻
+### Services/ATMService.cs
 
-Services/ATMService.cs
+```csharp
 
 using System;
 using TellerAPI.Models;
@@ -223,32 +237,37 @@ namespace TellerAPI.Services
     public class ATMService
     {
         private readonly Bank _bank;
-        private Account _currentAccount = null!;
+        private Account _currentAccount = null!; // non-nullable after login
 
-        public ATMService(Bank bank) => _bank = bank;
+        public ATMService(Bank bank)
+        {
+            _bank = bank;
+        }
 
         public void Start()
         {
             Console.WriteLine("🏦 Welcome to the Teller API");
 
-            // Login
+            // Login / select account
             while (true)
             {
                 Console.Write("\nEnter your account number: ");
                 string? accNumber = Console.ReadLine();
-                var account = _bank.GetAccount(accNumber ?? string.Empty);
+
+                var account = _bank.Accounts.Find(a => a.AccountNumber == accNumber);
 
                 if (account != null)
                 {
                     _currentAccount = account;
                     break;
                 }
+
                 Console.WriteLine("❌ Account not found. Try again.");
             }
 
             Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerID}!");
 
-            // Transaction loop
+            // Main transaction loop
             while (true)
             {
                 Console.WriteLine("\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit");
@@ -257,11 +276,25 @@ namespace TellerAPI.Services
 
                 switch (input)
                 {
-                    case "1": HandleDeposit(); break;
-                    case "2": HandleWithdrawal(); break;
-                    case "3": Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}"); break;
-                    case "4": Console.WriteLine("👋 Thank you for using TellerAPI!"); return;
-                    default: Console.WriteLine("❌ Invalid option. Try again."); break;
+                    case "1":
+                        HandleDeposit();
+                        break;
+
+                    case "2":
+                        HandleWithdrawal();
+                        break;
+
+                    case "3":
+                        Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}");
+                        break;
+
+                    case "4":
+                        Console.WriteLine("👋 Thank you for using TellerAPI!");
+                        return;
+
+                    default:
+                        Console.WriteLine("❌ Invalid option. Try again.");
+                        break;
                 }
             }
         }
@@ -276,9 +309,15 @@ namespace TellerAPI.Services
                     _currentAccount.Deposit(amount);
                     Console.WriteLine($"✅ New Balance: {_currentAccount.Balance:C}");
                 }
-                catch (ArgumentException ex) { Console.WriteLine($"❌ {ex.Message}"); }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine($"❌ {ex.Message}");
+                }
             }
-            else Console.WriteLine("❌ Invalid amount entered.");
+            else
+            {
+                Console.WriteLine("❌ Invalid amount entered.");
+            }
         }
 
         private void HandleWithdrawal()
@@ -293,57 +332,78 @@ namespace TellerAPI.Services
                     else
                         Console.WriteLine("❌ Insufficient funds!");
                 }
-                catch (ArgumentException ex) { Console.WriteLine($"❌ {ex.Message}"); }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine($"❌ {ex.Message}");
+                }
             }
-            else Console.WriteLine("❌ Invalid amount entered.");
+            else
+            {
+                Console.WriteLine("❌ Invalid amount entered.");
+            }
         }
     }
 }
 
 
-⸻
+```
 
-📂 Data Files
+### Data Files
 
 TellerAPI/Data/
- • Accounts.txt – Each line: <AccountType>,<AccountNumber>,<CustomerID>,<Balance>
-Example: Checking,10001,D001,457.98
- • Customers.txt – Optional customer info
- • DailyBalances.txt – Optional daily transactions
+├── Accounts.txt       # Holds account information
+├── Customers.txt      # Optional: customer data
+└── DailyBalances.txt  # Optional: daily transaction records
 
 ⸻
+
+TellerAPI – ATM Simulator
+
+Folder Structure
+
+TellerAPI/
+├── Data/                  # Account, Customer, and DailyBalances data files
+├── Models/                # Account, Bank, CheckingAccount, SavingAccount classes
+├── Services/              # ATMService, FileService
+├── Program.cs             # Entry point
+└── TellerAPI.csproj
+
+Key Features
+ • Loads accounts from Data/Accounts.txt.
+ • Supports deposit, withdrawal, and balance check for accounts.
+ • Protects Balance with a protected setter in Account.
+ • File operations handled via FileService (read/write/append).
+ • ATMService handles account operations, now supports both Account and Bank.
+
+Accounts Data Format (Accounts.txt)
+Each line represents an account, with values separated by commas:
+
+```csharp
+<AccountType>,<AccountNumber>,<CustomerName>,<Balance>
+
+ • <AccountType>: Checking or Saving
+ • <AccountNumber>: unique string of digits
+ • <CustomerName>: name of account holder
+ • <Balance>: decimal number (e.g., 1000.50)
+```
+
+Example:
+
+Checking,12333444,John Doe,1500.00
+Saving,123445566,Jane Smith,2500.75
+
+Current Behavior
+ • Prompts user for account number.
+ • Finds account in Bank.Accounts.
+ • Starts ATM menu for selected account.
+ • Note: Account lookup fails if Accounts.txt lines are malformed or numbers do not match.
 
 Usage
 
 dotnet run --project TellerAPI/TellerAPI.csproj
 
- • Enter account number to login.
- • Follow menu to deposit, withdraw, or check balance.
-
-⸻
-
-Folder Structure
-
-TellerAPI/
-├─ Data/
-├─ Models/
-├─ Services/
-├─ Program.cs
-└─ TellerAPI.csproj
-
-
-⸻
-
-✅ Key Features
- • Loads accounts from Accounts.txt
- • Supports deposit, withdrawal, and balance check
- • Protects Balance with protected set
- • File operations via FileService
- • ATMService handles account operations
-
-⸻
-
-
+ • Enter account number to access.
+ • Follow the menu to deposit, withdraw, or check balance.
 
 ### Program Flow (Teller API Diagram)
 
