@@ -177,24 +177,23 @@ Swagger UI: https://localhost:7255/swagger
 
 ```mermaid
 flowchart TD
-    Start[Start API] --> Root[Swagger / Root Endpoint]
-    Root --> Select{Select Endpoint}
+    A[Start API] --> B[Swagger / Root Endpoint]
+    B --> C{Select Endpoint}
 
-    Select --> |GET /items| FetchAll[Fetch all items from DB]
-    FetchAll --> ReturnList[Return JSON list]
+    C -->|"GET /items"| D[Fetch all items from DB]
+    D --> E[Return JSON list]
 
-    Select --> |GET /items/:id| FetchOne[Fetch item by ID]
-    FetchOne --> Exists{Item Exists?}
-    Exists --> |Yes| ReturnItem[Return Item JSON]
-    Exists --> |No| Return404[Return 404 Not Found]
+    C -->|"GET /items/:id"| F[Fetch item by ID]
+    F --> G{Item Exists?}
+    G -->|Yes| H[Return Item JSON]
+    G -->|No| I[Return 404 Not Found]
 
-    Select --> |POST /items| PostItem[Receive Item JSON]
-    PostItem --> Validate{Validate Input}
-    Validate --> |Valid| Insert[Insert into DB]
-    Validate --> |Invalid| BadRequest[Return 400 Bad Request]
-    Insert --> Created[Return Created Response]
-
-⸻
+    C -->|"POST /items"| J[Receive Item JSON]
+    J --> K{Validate Input}
+    K -->|Valid| L[Insert into DB]
+    K -->|Invalid| M[Return 400 Bad Request]
+    L --> N[Return Created Response]
+```
 
 🔧 Development Highlights
  • Minimal API with ASP.NET Core
