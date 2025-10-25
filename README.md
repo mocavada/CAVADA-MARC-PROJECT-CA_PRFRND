@@ -175,7 +175,8 @@ Swagger UI: https://localhost:7255/swagger
 
 📊 Program Flow (Mermaid Diagram)
 
-```flowchart TD
+```mermaid
+flowchart TD
     Start[Start API] --> Root[Swagger / Root Endpoint]
     Root --> Select{Select Endpoint}
 
