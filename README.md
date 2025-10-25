@@ -343,8 +343,6 @@ TellerAPI/
 
 ⸻
 
-
-
 ### Program Flow (Teller API Diagram)
 
 ![Teller API Diagram](./images/diag-project2-1.png)
