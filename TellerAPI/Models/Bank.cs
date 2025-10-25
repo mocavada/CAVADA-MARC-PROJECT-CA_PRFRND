@@ -11,13 +11,14 @@ namespace TellerAPI.Models
         public List<Account> Accounts { get; private set; } = new();
         public List<Customer> Customers { get; private set; } = new();
 
+        // EF Core constructor
         public Bank(TellerDbContext context)
         {
             _context = context;
             LoadAccounts();
         }
 
-        // Fallback constructor when using text files
+        // Text file fallback constructor
         public Bank(List<Account> accounts, List<Customer> customers)
         {
             Accounts = accounts;
@@ -33,11 +34,10 @@ namespace TellerAPI.Models
             }
         }
 
-        public Account? FindAccount(string accountNumber)
-        {
-            return Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber);
-        }
+        public Account? FindAccount(string accountNumber) =>
+            Accounts.FirstOrDefault(a => a.AccountNumber == accountNumber);
 
+        // Load from text files
         public static (List<Account> Accounts, List<Customer> Customers) LoadFromFiles(string dataFolder)
         {
             var accounts = new List<Account>();

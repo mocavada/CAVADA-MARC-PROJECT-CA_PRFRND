@@ -21,8 +21,7 @@ namespace TellerAPI.Models
         {
             if (amount <= 0)
                 throw new ArgumentException("Withdrawal amount must be positive.");
-            if (Balance < amount)
-                return false;
+            if (Balance < amount) return false;
 
             Balance -= amount;
             return true;
@@ -31,4 +30,8 @@ namespace TellerAPI.Models
         public override string ToString() =>
             $"{AccountNumber} | Customer: {Customer?.Name ?? CustomerID} | Balance: {Balance:C}";
     }
+
+    public class CheckingAccount : Account { }
+
+    public class SavingsAccount : Account { }
 }
