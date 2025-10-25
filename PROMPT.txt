@@ -1,189 +1,61 @@
+⸻
 
-Next Prompt Template for TellerAPI Development
+TellerAPI Quick Test Checklist
 
-Objective: Test full ATM functionality, including SQL connection fallback, and prepare for new features like transaction history.
+1️⃣ SQL & Initialization
+	•	SQL Server running?
+	•	Run program: dotnet run --project TellerAPI/TellerAPI.csproj
+	•	✅ Connected to SQL Server or ⚠️ Fallback to .txt
+	•	🏦 Welcome message displayed
+	•	X accounts loaded
 
 ⸻
 
-1️⃣ Setup and Initialization
-
-// Program.cs
-using System;
-using TellerAPI.Models;
-using TellerAPI.Services;
-using Microsoft.EntityFrameworkCore;
-
-class Program
-{
-    static void Main()
-    {
-        Bank bank;
-
-        try
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<TellerDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ATM;User Id=sa;Password=YourStrong!Pass123;");
-            using var context = new TellerDbContext(optionsBuilder.Options);
-
-            if (context.Database.CanConnect())
-            {
-                Console.WriteLine("✅ Connected to SQL Server.");
-                bank = new Bank(context);
-            }
-            else
-            {
-                throw new Exception("SQL not available");
-            }
-        }
-        catch
-        {
-            Console.WriteLine("⚠️ SQL connection failed. Using local text data...");
-            string dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
-            var (accounts, customers) = Bank.LoadFromFiles(dataFolder);
-            bank = new Bank(accounts, customers);
-        }
-
-        // Launch ATM Service
-        var atmService = new ATMService(bank);
-        atmService.Start();
-    }
-}
-
-
+2️⃣ Account Login
+	•	Enter valid account number → should show account details
+	•	Enter invalid account number → ❌ Account not found message
+	•	Test multiple account logins in a row
 
 ⸻
 
-2️⃣ Bank & Account Testing
-	•	Ensure Bank can:
-	•	Load from SQL if available
-	•	Fallback to .txt if SQL fails
-	•	Find accounts by number
-	•	Test all Account actions:
-	•	Deposit(decimal amount)
-	•	Withdraw(decimal amount)
-	•	ToString() for display
+3️⃣ Transaction Menu
+
+Menu: 1. Deposit  2. Withdraw  3. Check Balance  4. Exit
+
+Deposit:
+	•	Valid amount updates balance
+	•	Invalid amounts: negative or non-numeric → show error
+
+Withdraw:
+	•	Valid amount < balance → updates balance
+	•	Amount > balance → ❌ Insufficient funds
+	•	Invalid inputs: negative or non-numeric → show error
+
+Check Balance:
+	•	Balance displays correct current value
+
+Exit:
+	•	Menu exits and prints goodbye message
 
 ⸻
 
-3️⃣ ATMService Testing
-	1.	Prompt for account number
-	2.	Validate login
-	3.	Test transaction loop:
-	•	Deposit
-	•	Withdraw
-	•	Check balance
-	•	Exit
-	4.	Verify fallback works by temporarily stopping SQL server.
+4️⃣ Fallback & Edge Cases
+	•	Stop SQL server → fallback loads .txt data
+	•	Multiple accounts, balances independent
+	•	Load all accounts from .txt (10 accounts)
 
 ⸻
 
-4️⃣ Next Feature Additions
-	•	Transaction History: Log every deposit/withdrawal per account
-	•	Multiple Accounts per Customer: Allow one customer to hold multiple accounts
-	•	Better UI Prompts: Show account type, customer name, etc.
-	•	Unit Testing: Verify:
-	•	Bank.FindAccount
-	•	Deposit/Withdraw
-	•	Fallback logic
-	•	ATMService menu actions
+5️⃣ Developer Checks
+	•	Bank.FindAccount works
+	•	Deposit / Withdraw correctly updates balances
+	•	EF Core TPH inheritance works (Discriminator column)
+	•	.txt fallback format correct:
+	•	Accounts.txt → Type,CustomerID,AccountNumber,Balance
+	•	Customers.txt → Name,CustomerID
 
 ⸻
 
-✅ Developer Notes
-	•	All EF Core models:
-	•	abstract Account
-	•	CheckingAccount : Account
-	•	SavingsAccount : Account
-	•	Customer
-	•	DbContext handles TPH inheritance for accounts
-	•	.txt files format:
-	•	Accounts.txt: Type,CustomerID,AccountNumber,Balance
-	•	Customer.txt: Name,CustomerID
+✅ All steps checked → TellerAPI fully functional and fallback verified
 
 ⸻
-
-TellerAPI Test Scenario Script
-
-Instructions: Copy this into your next session or run step by step in the console.
-
-⸻
-
-1️⃣ Test SQL Connection & Fallback
-	1.	Stop SQL Server (or keep it running to test live connection).
-	2.	Run your program:
-
-dotnet run --project TellerAPI/TellerAPI.csproj
-
-	3.	Expected Output:
-
-	•	✅ Connected to SQL Server (if running)
-	•	⚠️ SQL connection failed. Using local text data… (if SQL stopped)
-	•	🏦 Welcome to the Teller API
-	•	Loaded X accounts from source.
-
-⸻
-
-2️⃣ Test Account Login
-	•	Enter valid account numbers from your .txt or SQL:
-	•	10021, 20034, 20008, etc.
-	•	Enter invalid account numbers to test error handling.
-	•	Expected Output:
-	•	✅ Found Account: shows account number, customer name, and balance
-	•	❌ Account not found. Try again.
-
-⸻
-
-3️⃣ Test Transaction Loop
-
-ATMService menu:
-
-1. Deposit
-2. Withdraw
-3. Check Balance
-4. Exit
-
-Deposit
-	•	Select 1
-	•	Enter a valid amount: 50.75
-	•	Enter invalid amounts: -20, abc
-	•	Expected Output:
-	•	✅ New Balance: updates correctly
-	•	❌ Deposit amount must be positive.
-	•	❌ Invalid amount entered.
-
-Withdraw
-	•	Select 2
-	•	Enter a valid amount smaller than balance: 10
-	•	Enter amount larger than balance: 9999
-	•	Enter invalid amounts: -5, xyz
-	•	Expected Output:
-	•	✅ New Balance: decreases correctly
-	•	❌ Insufficient funds!
-	•	❌ Invalid amount entered.
-
-Check Balance
-	•	Select 3
-	•	Verify it matches previous transactions
-
-Exit
-	•	Select 4
-	•	Console prints: 👋 Thank you for using TellerAPI!
-
-⸻
-
-4️⃣ Test Multiple Accounts / Edge Cases
-	•	Try logging in with several account numbers in a row
-	•	Verify balances are independent
-	•	Ensure .txt fallback works for all accounts listed
-
-⸻
-
-5️⃣ Logging / Validation
-	•	Manually check that balances update correctly after each deposit/withdrawal
-	•	If using .txt fallback, confirm all 10 accounts load
-	•	If SQL active, confirm EF Core loads accounts without errors (watch for Discriminator column if using inheritance)
-
-⸻
-
-This script is designed to cover all current functionality and validate SQL fallback.
-

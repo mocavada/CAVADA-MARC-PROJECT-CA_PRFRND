@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TellerAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1df3f9d45cd5a49e7c639884c9eb00740dc81e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+399dd23071deeba642a753217954d0c389ca1317")]
 [assembly: System.Reflection.AssemblyProductAttribute("TellerAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TellerAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
