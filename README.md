@@ -54,9 +54,11 @@ app.MapPost("/items", async (Item newItem, InventoryDbContext db) =>
 });
 
 app.Run();
+```
 
-2. InventoryDbContext.cs
+## InventoryDbContext.cs
 
+```csharp
 using Microsoft.EntityFrameworkCore;
 
 namespace InventoryAPI
@@ -67,16 +69,19 @@ namespace InventoryAPI
         public DbSet<Item> Items { get; set; }
     }
 }
+```
 
-3. Item.cs
+## Item.cs
 
+```csharp
 namespace InventoryAPI
 {
     public record Item(int Id, string FirstName, string LastName, double Price);
 }
-
+```
 4. InventoryAPI.csproj
 
+```csharp
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -92,9 +97,11 @@ namespace InventoryAPI
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
   </ItemGroup>
 </Project>
+```
 
-5. InventoryAPI.http
+## InventoryAPI.http
 
+```csharp
 GET https://localhost:7255/items
 GET https://localhost:7255/items/1
 POST https://localhost:7255/items
@@ -106,9 +113,7 @@ Content-Type: application/json
   "lastName": "Box",
   "price": 499.99
 }
-
-
-⸻
+```
 
 🧰 Setup Instructions
 
@@ -133,13 +138,13 @@ Database Migrations
 dotnet ef migrations add InitialCreate --project InventoryAPI
 dotnet ef database update --project InventoryAPI
 
-
 ⸻
 
 💾 Database Model
 
-Item.cs
+## Item.cs
 
+```csharp
 public class Item
 {
     public int Id { get; set; }
@@ -147,9 +152,11 @@ public class Item
     public string LastName { get; set; }
     public double Price { get; set; }
 }
+```
 
-InventoryDbContext.cs
+## InventoryDbContext.cs
 
+```csharp
 using Microsoft.EntityFrameworkCore;
 
 public class InventoryDbContext: DbContext
@@ -157,10 +164,7 @@ public class InventoryDbContext: DbContext
     public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
     public DbSet<Item> Items { get; set; }
 }
-
-
-⸻
-
+```
 ⚙️ API Endpoints
 
 Endpoint Method Description
@@ -171,11 +175,7 @@ Endpoint Method Description
 
 Swagger UI: https://localhost:7255/swagger
 
-⸻
-
 📊 Program Flow (Diagram)
-
-![Inventory API Flow](images/inventory-api-flow.png)
 
 ```mermaid
 flowchart TD
