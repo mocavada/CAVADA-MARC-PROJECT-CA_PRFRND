@@ -50,6 +50,7 @@ class Program
 }
 
 
+
 ⸻
 
 2️⃣ Bank & Account Testing
@@ -100,4 +101,89 @@ class Program
 	•	Customer.txt: Name,CustomerID
 
 ⸻
+
+TellerAPI Test Scenario Script
+
+Instructions: Copy this into your next session or run step by step in the console.
+
+⸻
+
+1️⃣ Test SQL Connection & Fallback
+	1.	Stop SQL Server (or keep it running to test live connection).
+	2.	Run your program:
+
+dotnet run --project TellerAPI/TellerAPI.csproj
+
+	3.	Expected Output:
+
+	•	✅ Connected to SQL Server (if running)
+	•	⚠️ SQL connection failed. Using local text data… (if SQL stopped)
+	•	🏦 Welcome to the Teller API
+	•	Loaded X accounts from source.
+
+⸻
+
+2️⃣ Test Account Login
+	•	Enter valid account numbers from your .txt or SQL:
+	•	10021, 20034, 20008, etc.
+	•	Enter invalid account numbers to test error handling.
+	•	Expected Output:
+	•	✅ Found Account: shows account number, customer name, and balance
+	•	❌ Account not found. Try again.
+
+⸻
+
+3️⃣ Test Transaction Loop
+
+ATMService menu:
+
+1. Deposit
+2. Withdraw
+3. Check Balance
+4. Exit
+
+Deposit
+	•	Select 1
+	•	Enter a valid amount: 50.75
+	•	Enter invalid amounts: -20, abc
+	•	Expected Output:
+	•	✅ New Balance: updates correctly
+	•	❌ Deposit amount must be positive.
+	•	❌ Invalid amount entered.
+
+Withdraw
+	•	Select 2
+	•	Enter a valid amount smaller than balance: 10
+	•	Enter amount larger than balance: 9999
+	•	Enter invalid amounts: -5, xyz
+	•	Expected Output:
+	•	✅ New Balance: decreases correctly
+	•	❌ Insufficient funds!
+	•	❌ Invalid amount entered.
+
+Check Balance
+	•	Select 3
+	•	Verify it matches previous transactions
+
+Exit
+	•	Select 4
+	•	Console prints: 👋 Thank you for using TellerAPI!
+
+⸻
+
+4️⃣ Test Multiple Accounts / Edge Cases
+	•	Try logging in with several account numbers in a row
+	•	Verify balances are independent
+	•	Ensure .txt fallback works for all accounts listed
+
+⸻
+
+5️⃣ Logging / Validation
+	•	Manually check that balances update correctly after each deposit/withdrawal
+	•	If using .txt fallback, confirm all 10 accounts load
+	•	If SQL active, confirm EF Core loads accounts without errors (watch for Discriminator column if using inheritance)
+
+⸻
+
+This script is designed to cover all current functionality and validate SQL fallback.
 
