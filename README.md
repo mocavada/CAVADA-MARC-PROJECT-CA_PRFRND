@@ -56,7 +56,7 @@ app.MapPost("/items", async (Item newItem, InventoryDbContext db) =>
 app.Run();
 ```
 
-## InventoryDbContext.cs
+### 2. InventoryDbContext.cs
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
@@ -71,7 +71,7 @@ namespace InventoryAPI
 }
 ```
 
-## Item.cs
+### 3. Item.cs
 
 ```csharp
 namespace InventoryAPI
@@ -79,7 +79,8 @@ namespace InventoryAPI
     public record Item(int Id, string FirstName, string LastName, double Price);
 }
 ```
-4. InventoryAPI.csproj
+
+### 4. InventoryAPI.csproj
 
 ```csharp
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -99,7 +100,7 @@ namespace InventoryAPI
 </Project>
 ```
 
-## InventoryAPI.http
+### 5. InventoryAPI.http
 
 ```csharp
 GET https://localhost:7255/items
@@ -130,8 +131,8 @@ dotnet build
 dotnet run
 
 API will run on:
- • HTTPS: https://localhost:7255
- • HTTP: http://localhost:5091
+ • HTTPS: <https://localhost:7255>
+ • HTTP: <http://localhost:5091>
 
 Database Migrations
 
@@ -142,7 +143,7 @@ dotnet ef database update --project InventoryAPI
 
 💾 Database Model
 
-## Item.cs
+Item.cs
 
 ```csharp
 public class Item
@@ -154,7 +155,7 @@ public class Item
 }
 ```
 
-## InventoryDbContext.cs
+InventoryDbContext.cs
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
@@ -165,6 +166,7 @@ public class InventoryDbContext: DbContext
     public DbSet<Item> Items { get; set; }
 }
 ```
+
 ⚙️ API Endpoints
 
 Endpoint Method Description
@@ -173,7 +175,7 @@ Endpoint Method Description
 /items/{id} GET Fetch a single item by ID
 /items POST Add a new item
 
-Swagger UI: https://localhost:7255/swagger
+Swagger UI: <https://localhost:7255/swagger>
 
 📊 Program Flow (Diagram)
 
