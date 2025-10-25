@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yj1VqO/nZ2s=",
+  "dgSpecHash": "0MBSLmMFSmQ=",
   "success": true,
-  "projectFilePath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj",
+  "projectFilePath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/InventoryAPI/InventoryAPI.csproj",
   "expectedPackageFiles": [
     "/Users/mocavada/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/mocavada/.nuget/packages/microsoft.aspnetcore.openapi/9.0.9/microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",

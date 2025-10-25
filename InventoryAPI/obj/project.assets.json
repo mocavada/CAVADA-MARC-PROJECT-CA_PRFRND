@@ -3584,11 +3584,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj",
+      "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/InventoryAPI/InventoryAPI.csproj",
       "projectName": "InventoryAPI",
-      "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj",
+      "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/InventoryAPI/InventoryAPI.csproj",
       "packagesPath": "/Users/mocavada/.nuget/packages/",
-      "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/obj/",
+      "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/InventoryAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mocavada/.nuget/NuGet/NuGet.Config"

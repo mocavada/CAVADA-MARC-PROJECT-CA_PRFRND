@@ -6,7 +6,9 @@ namespace TellerAPI.Models
     {
         public string AccountNumber { get; set; } = string.Empty;
         public string CustomerID { get; set; } = string.Empty;
-        public decimal Balance { get; protected set; }
+        public decimal Balance { get; set; }
+
+        public Customer? Customer { get; set; }
 
         public virtual void Deposit(decimal amount)
         {
@@ -27,6 +29,6 @@ namespace TellerAPI.Models
         }
 
         public override string ToString() =>
-            $"{AccountNumber} | Customer: {CustomerID} | Balance: {Balance:C}";
+            $"{AccountNumber} | Customer: {Customer?.Name ?? CustomerID} | Balance: {Balance:C}";
     }
 }

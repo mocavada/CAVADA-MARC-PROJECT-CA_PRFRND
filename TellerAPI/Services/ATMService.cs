@@ -6,7 +6,7 @@ namespace TellerAPI.Services
     public class ATMService
     {
         private readonly Bank _bank;
-        private Account _currentAccount = null!; // non-nullable after login
+        private Account? _currentAccount;
 
         public ATMService(Bank bank)
         {
@@ -18,20 +18,21 @@ namespace TellerAPI.Services
             Console.WriteLine("🏦 Welcome to the Teller API");
 
             // Login / select account
-            while (true)
+            while (_currentAccount == null)
             {
                 Console.Write("\nEnter your account number: ");
-                string? accNumber = Console.ReadLine();
+                string? accNumber = Console.ReadLine()?.Trim();
 
-                var account = _bank.Accounts.Find(a => a.AccountNumber == accNumber);
-
-                if (account != null)
+                if (string.IsNullOrEmpty(accNumber))
                 {
-                    _currentAccount = account;
-                    break;
+                    Console.WriteLine("❌ Please enter a valid account number.");
+                    continue;
                 }
 
-                Console.WriteLine("❌ Account not found. Try again.");
+                _currentAccount = _bank.GetAccount(accNumber);
+
+                if (_currentAccount == null)
+                    Console.WriteLine("❌ Account not found. Try again.");
             }
 
             Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerID}!");
@@ -41,26 +42,22 @@ namespace TellerAPI.Services
             {
                 Console.WriteLine("\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit");
                 Console.Write("\nSelect an option: ");
-                string? input = Console.ReadLine();
+                string? input = Console.ReadLine()?.Trim();
 
                 switch (input)
                 {
                     case "1":
                         HandleDeposit();
                         break;
-
                     case "2":
                         HandleWithdrawal();
                         break;
-
                     case "3":
                         Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}");
                         break;
-
                     case "4":
                         Console.WriteLine("👋 Thank you for using TellerAPI!");
                         return;
-
                     default:
                         Console.WriteLine("❌ Invalid option. Try again.");
                         break;
