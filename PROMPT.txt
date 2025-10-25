@@ -1,0 +1,103 @@
+
+Next Prompt Template for TellerAPI Development
+
+Objective: Test full ATM functionality, including SQL connection fallback, and prepare for new features like transaction history.
+
+⸻
+
+1️⃣ Setup and Initialization
+
+// Program.cs
+using System;
+using TellerAPI.Models;
+using TellerAPI.Services;
+using Microsoft.EntityFrameworkCore;
+
+class Program
+{
+    static void Main()
+    {
+        Bank bank;
+
+        try
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TellerDbContext>();
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ATM;User Id=sa;Password=YourStrong!Pass123;");
+            using var context = new TellerDbContext(optionsBuilder.Options);
+
+            if (context.Database.CanConnect())
+            {
+                Console.WriteLine("✅ Connected to SQL Server.");
+                bank = new Bank(context);
+            }
+            else
+            {
+                throw new Exception("SQL not available");
+            }
+        }
+        catch
+        {
+            Console.WriteLine("⚠️ SQL connection failed. Using local text data...");
+            string dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
+            var (accounts, customers) = Bank.LoadFromFiles(dataFolder);
+            bank = new Bank(accounts, customers);
+        }
+
+        // Launch ATM Service
+        var atmService = new ATMService(bank);
+        atmService.Start();
+    }
+}
+
+
+⸻
+
+2️⃣ Bank & Account Testing
+	•	Ensure Bank can:
+	•	Load from SQL if available
+	•	Fallback to .txt if SQL fails
+	•	Find accounts by number
+	•	Test all Account actions:
+	•	Deposit(decimal amount)
+	•	Withdraw(decimal amount)
+	•	ToString() for display
+
+⸻
+
+3️⃣ ATMService Testing
+	1.	Prompt for account number
+	2.	Validate login
+	3.	Test transaction loop:
+	•	Deposit
+	•	Withdraw
+	•	Check balance
+	•	Exit
+	4.	Verify fallback works by temporarily stopping SQL server.
+
+⸻
+
+4️⃣ Next Feature Additions
+	•	Transaction History: Log every deposit/withdrawal per account
+	•	Multiple Accounts per Customer: Allow one customer to hold multiple accounts
+	•	Better UI Prompts: Show account type, customer name, etc.
+	•	Unit Testing: Verify:
+	•	Bank.FindAccount
+	•	Deposit/Withdraw
+	•	Fallback logic
+	•	ATMService menu actions
+
+⸻
+
+✅ Developer Notes
+	•	All EF Core models:
+	•	abstract Account
+	•	CheckingAccount : Account
+	•	SavingsAccount : Account
+	•	Customer
+	•	DbContext handles TPH inheritance for accounts
+	•	.txt files format:
+	•	Accounts.txt: Type,CustomerID,AccountNumber,Balance
+	•	Customer.txt: Name,CustomerID
+
+⸻
+
