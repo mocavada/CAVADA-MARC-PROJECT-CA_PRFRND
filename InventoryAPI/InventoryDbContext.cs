@@ -10,4 +10,4 @@ namespace InventoryAPI
 
         public DbSet<Item> Items { get; set; } = null!;
     }
-}brew install wkhtmltopdf
+}
