@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/InventoryAPI/InventoryAPI.csproj": {}
+    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj": {}
   },
   "projects": {
-    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/InventoryAPI/InventoryAPI.csproj": {
+    "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/InventoryAPI/InventoryAPI.csproj",
+        "projectUniqueName": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj",
         "projectName": "InventoryAPI",
-        "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/InventoryAPI/InventoryAPI.csproj",
+        "projectPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/InventoryAPI.csproj",
         "packagesPath": "/Users/mocavada/.nuget/packages/",
-        "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND-1/CAVADA-MARC-PROJECT-CAPRFND/InventoryAPI/obj/",
+        "outputPath": "/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/InventoryAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mocavada/.nuget/NuGet/NuGet.Config"
@@ -47,6 +47,30 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
             }
           },
           "imports": [

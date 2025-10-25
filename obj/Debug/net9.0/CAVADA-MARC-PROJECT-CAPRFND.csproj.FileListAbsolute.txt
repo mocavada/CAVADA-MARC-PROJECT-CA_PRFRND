@@ -1,0 +1,8 @@
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.csproj.AssemblyReference.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/rpswa.dswa.cache.json
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.AssemblyInfoInputs.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.AssemblyInfo.cs
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.csproj.CoreCompileInputs.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.MvcApplicationPartsAssemblyInfo.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PRFRND/obj/Debug/net9.0/CAVADA-MARC-PROJECT-CAPRFND.sourcelink.json
