@@ -61,7 +61,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InventoryAPI
 {
-    public class InventoryDbContext : DbContext
+    public class InventoryDbContext: DbContext
     {
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
         public DbSet<Item> Items { get; set; }
@@ -152,7 +152,7 @@ InventoryDbContext.cs
 
 using Microsoft.EntityFrameworkCore;
 
-public class InventoryDbContext : DbContext
+public class InventoryDbContext: DbContext
 {
     public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
     public DbSet<Item> Items { get; set; }
@@ -173,7 +173,9 @@ Swagger UI: https://localhost:7255/swagger
 
 ⸻
 
-📊 Program Flow (Mermaid Diagram)
+📊 Program Flow (Diagram)
+
+![Inventory API Flow](images/inventory-api-flow.png)
 
 ```mermaid
 flowchart TD
