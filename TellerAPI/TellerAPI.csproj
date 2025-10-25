@@ -16,4 +16,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+  <None Update="Data\Accounts.txt">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="Data\Customer.txt">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
+
 </Project>

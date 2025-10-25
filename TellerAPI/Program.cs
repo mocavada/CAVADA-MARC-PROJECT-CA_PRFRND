@@ -49,6 +49,7 @@ namespace TellerAPI
             }
 
             Console.WriteLine("\n🏦 Welcome to the Teller API\n");
+            Console.WriteLine($"Loaded {bank.Accounts.Count} accounts from source.\n");
 
             while (true)
             {

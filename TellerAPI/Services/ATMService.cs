@@ -29,10 +29,12 @@ namespace TellerAPI.Services
                     continue;
                 }
 
-                _currentAccount = _bank.GetAccount(accNumber);
+                _currentAccount = _bank.FindAccount(accNumber);
 
                 if (_currentAccount == null)
+                {
                     Console.WriteLine("❌ Account not found. Try again.");
+                }
             }
 
             Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerID}!");
@@ -53,7 +55,7 @@ namespace TellerAPI.Services
                         HandleWithdrawal();
                         break;
                     case "3":
-                        Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}");
+                        ShowBalance();
                         break;
                     case "4":
                         Console.WriteLine("👋 Thank you for using TellerAPI!");
@@ -67,13 +69,19 @@ namespace TellerAPI.Services
 
         private void HandleDeposit()
         {
+            if (_currentAccount == null)
+            {
+                Console.WriteLine("⚠️ No account selected.");
+                return;
+            }
+
             Console.Write("Enter deposit amount: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal amount))
             {
                 try
                 {
                     _currentAccount.Deposit(amount);
-                    Console.WriteLine($"✅ New Balance: {_currentAccount.Balance:C}");
+                    Console.WriteLine($"✅ Deposit successful. New Balance: {_currentAccount.Balance:C}");
                 }
                 catch (ArgumentException ex)
                 {
@@ -88,13 +96,19 @@ namespace TellerAPI.Services
 
         private void HandleWithdrawal()
         {
+            if (_currentAccount == null)
+            {
+                Console.WriteLine("⚠️ No account selected.");
+                return;
+            }
+
             Console.Write("Enter withdrawal amount: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal amount))
             {
                 try
                 {
                     if (_currentAccount.Withdraw(amount))
-                        Console.WriteLine($"✅ New Balance: {_currentAccount.Balance:C}");
+                        Console.WriteLine($"✅ Withdrawal successful. New Balance: {_currentAccount.Balance:C}");
                     else
                         Console.WriteLine("❌ Insufficient funds!");
                 }
@@ -107,6 +121,17 @@ namespace TellerAPI.Services
             {
                 Console.WriteLine("❌ Invalid amount entered.");
             }
+        }
+
+        private void ShowBalance()
+        {
+            if (_currentAccount == null)
+            {
+                Console.WriteLine("⚠️ No account selected.");
+                return;
+            }
+
+            Console.WriteLine($"💰 Current Balance: {_currentAccount.Balance:C}");
         }
     }
 }
