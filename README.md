@@ -20,19 +20,20 @@ flowchart TD
     A[Start API] --> B[Swagger / Root Endpoint]
     B --> C{Select Endpoint}
 
-    C -->|GET /items| D[Fetch all items from DB]
+    C -->|GET items| D[Fetch all items from DB]
     D --> E[Return JSON list]
 
-    C -->|GET /items/{id}| F[Fetch item by ID]
+    C -->|GET item by ID| F[Fetch item by ID]
     F --> G{Item Exists?}
     G -->|Yes| H[Return Item JSON]
     G -->|No| I[Return 404 Not Found]
 
-    C -->|POST /items| J[Receive Item JSON]
+    C -->|POST items| J[Receive Item JSON]
     J --> K{Validate Input}
     K -->|Valid| L[Insert into DB]
     K -->|Invalid| M[Return 400 Bad Request]
     L --> N[Return Created Response]
+```
 
 
 ⸻
