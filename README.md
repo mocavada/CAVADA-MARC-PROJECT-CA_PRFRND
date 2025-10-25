@@ -1,7 +1,7 @@
 # Inventory Management System  
 
 ---
-Project 1 – Programming Fundamentals (CA-PRFND)
+Project 2 – Programming Techniques (CA-PRTQS)
 title: "Inventory Management System"
 description: "C# Programming Fundamentals Project by Marc Cavada"
 author: "Marc Cavada"
