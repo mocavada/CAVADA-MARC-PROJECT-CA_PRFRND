@@ -1,20 +1,26 @@
 # Programming Projects  
 
+This project is a **prototype of ATM Teller and Inventory Management System** developed in **C# using .NET 9 and Visual Studio Code**.  
+
+It captures and manages inventory items using **EF Core and SQLite**, exposing a **RESTful API** with Swagger/OpenAPI support.
+
 ---
-Project 2 – Programming Techniques (CA-PRTQS)
+
+## Project 2 – Programming Techniques (CA-PRTQS)
+
 title: "ATM Teller Simulator"
 description: "C# Programming Fundamentals Project by Marc Cavada"
 author: "Marc Cavada"
 
 ## 🔗 Project Repository
 
-The source code and full project files for **Project 2 – ATM Teller Simulator** are available on GitHub:  
+The source code and full project files for:
+
+**Project 1 – Inventory Management System**
+**Project 2 – ATM Teller Simulator**
+
+are available on GitHub:  
 [https://github.com/mocavada/CAVADA-MARC-PROJECT-CA_PR](https://github.com/mocavada/CAVADA-MARC-PROJECT-CA_PR)
-
-## 📘 Introduction  
-
-This project is a **prototype of ATM Teller and Inventory Management System** developed in **C# using .NET 9 and Visual Studio Code**.  
-It captures and manages inventory items using **EF Core and SQLite**, exposing a **RESTful API** with Swagger/OpenAPI support.
 
 ---
 
