@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CAVADA-MARC-PROJECT-CAPRFND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aec8b7724296b2c9fdaf5c6e89fbb047acb6f1a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6be5a2d31fd353280ca4fc088e7f4ee300c5e29")]
 [assembly: System.Reflection.AssemblyProductAttribute("CAVADA-MARC-PROJECT-CAPRFND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CAVADA-MARC-PROJECT-CAPRFND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,15 @@
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.AssemblyInfoInputs.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.AssemblyInfo.cs
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.csproj.CoreCompileInputs.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.sourcelink.json
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/bin/Debug/net9.0/TellerAPI
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/bin/Debug/net9.0/TellerAPI.deps.json
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/bin/Debug/net9.0/TellerAPI.runtimeconfig.json
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/bin/Debug/net9.0/TellerAPI.dll
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/bin/Debug/net9.0/TellerAPI.pdb
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.dll
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/refint/TellerAPI.dll
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.pdb
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/TellerAPI.genruntimeconfig.cache
+/Users/mocavada/@Code/MarcCavadca-Assignment-CA-PFRND/CAVADA-MARC-PROJECT-CA_PR/TellerAPI/obj/Debug/net9.0/ref/TellerAPI.dll

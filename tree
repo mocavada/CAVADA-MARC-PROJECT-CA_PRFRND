@@ -1,0 +1,72 @@
+./
+├── -L
+├── appsettings.Development.json
+├── appsettings.json
+├── bin/
+│   └── Debug/
+│       └── net9.0/
+├── CAVADA-MARC-PROJECT-CA_PR.sln
+├── images/
+│   └── diag-project2-3.png
+├── InventoryAPI/
+│   ├── appsettings.Development.json
+│   ├── appsettings.json
+│   ├── bin/
+│   │   └── Debug/
+│   ├── InventoryAPI.csproj
+│   ├── InventoryAPI.http
+│   ├── InventoryDbContext.cs
+│   ├── Item.cs
+│   ├── obj/
+│   │   ├── Debug/
+│   │   ├── InventoryAPI.csproj.EntityFrameworkCore.targets
+│   │   ├── InventoryAPI.csproj.nuget.dgspec.json
+│   │   ├── InventoryAPI.csproj.nuget.g.props
+│   │   ├── InventoryAPI.csproj.nuget.g.targets
+│   │   ├── project.assets.json
+│   │   └── project.nuget.cache
+│   ├── Program.cs
+│   └── Properties/
+│       └── launchSettings.json
+├── InventoryAPI.html
+├── obj/
+│   ├── CAVADA-MARC-PROJECT-CAPRFND.csproj.EntityFrameworkCore.targets
+│   ├── CAVADA-MARC-PROJECT-CAPRFND.csproj.nuget.dgspec.json
+│   ├── CAVADA-MARC-PROJECT-CAPRFND.csproj.nuget.g.props
+│   ├── CAVADA-MARC-PROJECT-CAPRFND.csproj.nuget.g.targets
+│   ├── Debug/
+│   │   └── net9.0/
+│   ├── project.assets.json
+│   └── project.nuget.cache
+├── Program.cs
+├── Properties/
+│   └── launchSettings.json
+├── README.md
+├── README.pdf
+├── TellerAPI/
+│   ├── bin/
+│   │   └── Debug/
+│   ├── Data/
+│   │   ├── Accounts.txt
+│   │   ├── Customers.txt
+│   │   └── DailyBalances.txt
+│   ├── Models/
+│   │   ├── Account.cs
+│   │   ├── Bank.cs
+│   │   ├── CheckingAccount.cs
+│   │   └── SavingAccount.cs
+│   ├── obj/
+│   │   ├── Debug/
+│   │   ├── project.assets.json
+│   │   ├── project.nuget.cache
+│   │   ├── TellerAPI.csproj.nuget.dgspec.json
+│   │   ├── TellerAPI.csproj.nuget.g.props
+│   │   └── TellerAPI.csproj.nuget.g.targets
+│   ├── Program.cs
+│   ├── Services/
+│   │   ├── ATMService.cs
+│   │   └── FileService.cs
+│   └── TellerAPI.csproj
+└── tree
+
+23 directories, 47 files

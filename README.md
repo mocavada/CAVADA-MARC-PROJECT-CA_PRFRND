@@ -1,15 +1,75 @@
-# Inventory Management System  
+# Programming Projects  
 
 ---
 Project 2 – Programming Techniques (CA-PRTQS)
-title: "Inventory Management System"
+title: "ATM Teller Simulator"
 description: "C# Programming Fundamentals Project by Marc Cavada"
 author: "Marc Cavada"
 
 ## 📘 Introduction  
 
-This project is a **prototype Inventory Management System** developed in **C# using .NET 9 and Visual Studio Code**.  
+This project is a **prototype of ATM Teller and Inventory Management System** developed in **C# using .NET 9 and Visual Studio Code**.  
 It captures and manages inventory items using **EF Core and SQLite**, exposing a **RESTful API** with Swagger/OpenAPI support.
+
+---
+
+## 📂 TellerAPI – Code Files
+
+Perfect! Here’s an updated README section including the expected Accounts.txt format:
+
+⸻
+
+TellerAPI – ATM Simulator
+
+Folder Structure
+
+TellerAPI/
+├── Data/                  # Account, Customer, and DailyBalances data files
+├── Models/                # Account, Bank, CheckingAccount, SavingAccount classes
+├── Services/              # ATMService, FileService
+├── Program.cs             # Entry point
+└── TellerAPI.csproj
+
+Key Features
+ • Loads accounts from Data/Accounts.txt.
+ • Supports deposit, withdrawal, and balance check for accounts.
+ • Protects Balance with a protected setter in Account.
+ • File operations handled via FileService (read/write/append).
+ • ATMService handles account operations, now supports both Account and Bank.
+
+Accounts Data Format (Accounts.txt)
+Each line represents an account, with values separated by commas:
+
+```csharp
+<AccountType>,<AccountNumber>,<CustomerName>,<Balance>
+
+ • <AccountType>: Checking or Saving
+ • <AccountNumber>: unique string of digits
+ • <CustomerName>: name of account holder
+ • <Balance>: decimal number (e.g., 1000.50)
+```
+
+Example:
+
+Checking,12333444,John Doe,1500.00
+Saving,123445566,Jane Smith,2500.75
+
+Current Behavior
+ • Prompts user for account number.
+ • Finds account in Bank.Accounts.
+ • Starts ATM menu for selected account.
+ • Note: Account lookup fails if Accounts.txt lines are malformed or numbers do not match.
+
+Usage
+
+dotnet run --project TellerAPI/TellerAPI.csproj
+
+ • Enter account number to access.
+ • Follow the menu to deposit, withdraw, or check balance.
+
+⸻
+
+If you like, I can also add a short section about DailyBalances.txt and Customers.txt so the README fully documents the required data files. That way anyone can run TellerAPI without confusion. Do you want me to add that too?
 
 ---
 
@@ -179,6 +239,51 @@ Swagger UI: <https://localhost:7255/swagger>
 
 📊 Program Flow (Diagram)
 
+### Teller API
+
+![Teller API Diagram](./images/diag-project2-3.png)
+
+```mermaid
+flowchart TD
+    A[Start ATM] --> B[Login Screen]
+    B --> C{Validate Name & PIN?}
+    C -->|No| D[Display Error Message]
+    D --> B
+    C -->|Yes| E[Main Menu]
+
+    E -->|Deposit| F[Select Account Type]
+    F --> G[Enter Deposit Amount]
+    G --> H[Update Balance]
+    H --> E
+
+    E -->|Withdraw| I[Select Account Type]
+    I --> J[Enter Withdrawal Amount]
+    J --> K{Validate Funds?}
+    K -->|No| L[Insufficient Funds Message]
+    L --> E
+    K -->|Yes| M[Dispense Cash & Update Balance]
+    M --> E
+
+    E -->|Transfer| N[Select Source & Target Account]
+    N --> O[Enter Transfer Amount]
+    O --> P{Validate Funds?}
+    P -->|No| Q[Display Error]
+    P -->|Yes| R[Transfer Funds & Update Balances]
+    R --> E
+
+    E -->|Bill Payment| S[Enter Bill Amount]
+    S --> T{Validate Amount & Balance?}
+    T -->|No| U[Display Error]
+    T -->|Yes| V[Process Payment + Fee]
+    V --> E
+
+    E -->|Supervisor Mode| W[Login as Admin]
+    W --> X[Access Admin Menu]
+    X -->|Pay Interest
+```
+
+### Inventory API
+
 ![Inventory API Diagram](./images/diag-project2-3.png)
 
 ```mermaid
@@ -200,6 +305,8 @@ flowchart TD
     K -->|Invalid| M[Return 400 Bad Request]
     L --> N[Return Created Response]
 ```
+
+⸻
 
 🔧 Development Highlights
  • Minimal API with ASP.NET Core
