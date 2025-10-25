@@ -199,6 +199,7 @@ Swagger UI: https://localhost:7255/swagger
 
 📊 Program Flow (Mermaid Diagram)
 
+```mermaid
 flowchart TD
     A[Start API] --> B[Swagger / Root Endpoint]
     B --> C{Select Endpoint}
@@ -216,8 +217,7 @@ flowchart TD
     K -->|Valid| L[Insert into DB]
     K -->|Invalid| M[Return 400 Bad Request]
     L --> N[Return Created Response]
-
-
+```
 ⸻
 
 🔧 Development Highlights
