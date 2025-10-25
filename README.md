@@ -193,7 +193,6 @@ flowchart TD
     Validate --> |Valid| Insert[Insert into DB]
     Validate --> |Invalid| BadRequest[Return 400 Bad Request]
     Insert --> Created[Return Created Response]
-```
 
 ⸻
 
