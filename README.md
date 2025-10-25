@@ -311,9 +311,6 @@ dotnet run --project TellerAPI/TellerAPI.csproj
  • Enter account number to access.
  • Follow the menu to deposit, withdraw, or check balance.
 
-⸻
-
-If you like, I can also add a short section about DailyBalances.txt and Customers.txt so the README fully documents the required data files. That way anyone can run TellerAPI without confusion. Do you want me to add that too?
 
 ---
 

@@ -6,6 +6,7 @@
 │       └── net9.0/
 ├── CAVADA-MARC-PROJECT-CA_PR.sln
 ├── images/
+│   ├── diag-project2-1.png
 │   └── diag-project2-3.png
 ├── InventoryAPI/
 │   ├── appsettings.Development.json
@@ -68,4 +69,4 @@
 │   └── TellerAPI.csproj
 └── tree
 
-23 directories, 46 files
+23 directories, 47 files

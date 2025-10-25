@@ -6,7 +6,7 @@ namespace TellerAPI.Services
     public class ATMService
     {
         private readonly Bank _bank;
-        private Account? _currentAccount;
+        private Account _currentAccount = null!; // non-nullable after login
 
         public ATMService(Bank bank)
         {
@@ -18,18 +18,23 @@ namespace TellerAPI.Services
             Console.WriteLine("🏦 Welcome to the Teller API");
 
             // Login / select account
-            while (_currentAccount == null)
+            while (true)
             {
                 Console.Write("\nEnter your account number: ");
                 string? accNumber = Console.ReadLine();
 
-                _currentAccount = _bank.Accounts.Find(a => a.AccountNumber == accNumber);
+                var account = _bank.Accounts.Find(a => a.AccountNumber == accNumber);
 
-                if (_currentAccount == null)
-                    Console.WriteLine("❌ Account not found. Try again.");
+                if (account != null)
+                {
+                    _currentAccount = account;
+                    break;
+                }
+
+                Console.WriteLine("❌ Account not found. Try again.");
             }
 
-            Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerName}!");
+            Console.WriteLine($"\n✅ Logged in as {_currentAccount.CustomerID}!");
 
             // Main transaction loop
             while (true)

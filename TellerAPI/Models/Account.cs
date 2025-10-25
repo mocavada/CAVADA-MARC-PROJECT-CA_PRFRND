@@ -1,17 +1,12 @@
+using System;
+
 namespace TellerAPI.Models
 {
     public abstract class Account
     {
         public string AccountNumber { get; set; } = string.Empty;
-        public string CustomerName { get; set; } = string.Empty;
+        public string CustomerID { get; set; } = string.Empty;
         public decimal Balance { get; protected set; }
-
-        // Optional constructor for initial deposit
-        protected Account(decimal initialBalance = 0)
-        {
-            if (initialBalance > 0)
-                Deposit(initialBalance);
-        }
 
         public virtual void Deposit(decimal amount)
         {
@@ -32,6 +27,6 @@ namespace TellerAPI.Models
         }
 
         public override string ToString() =>
-            $"{AccountNumber} | {CustomerName} | Balance: {Balance:C}";
+            $"{AccountNumber} | Customer: {CustomerID} | Balance: {Balance:C}";
     }
 }

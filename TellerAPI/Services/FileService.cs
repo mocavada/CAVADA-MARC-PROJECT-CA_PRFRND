@@ -10,42 +10,31 @@ namespace TellerAPI.Services
 
         public FileService()
         {
-            _dataPath = Path.Combine(AppContext.BaseDirectory, "Data");
-            if (!Directory.Exists(_dataPath))
-                Directory.CreateDirectory(_dataPath);
+            // Use project-relative path
+            _dataPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Data");
         }
 
         public List<string> ReadFile(string fileName)
         {
             string path = Path.Combine(_dataPath, fileName);
-            if (!File.Exists(path)) return new List<string>();
+            if (!File.Exists(path))
+            {
+                Console.WriteLine($"❌ File not found: {path}");
+                return new List<string>();
+            }
             return new List<string>(File.ReadAllLines(path));
         }
 
         public void WriteFile(string fileName, List<string> lines)
         {
-            try
-            {
-                string path = Path.Combine(_dataPath, fileName);
-                File.WriteAllLines(path, lines);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error writing to file {fileName}: {ex.Message}");
-            }
+            string path = Path.Combine(_dataPath, fileName);
+            File.WriteAllLines(path, lines);
         }
 
         public void AppendLine(string fileName, string line)
         {
-            try
-            {
-                string path = Path.Combine(_dataPath, fileName);
-                File.AppendAllText(path, line + Environment.NewLine);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error appending to file {fileName}: {ex.Message}");
-            }
+            string path = Path.Combine(_dataPath, fileName);
+            File.AppendAllText(path, line + Environment.NewLine);
         }
     }
 }
